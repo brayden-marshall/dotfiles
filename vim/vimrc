@@ -96,6 +96,18 @@ au BufNewFile,BufRead *.go
     \ set fileformat=unix |
     \ set filetype=go
 
+" prose settings
+au BufNewFile, BufRead *.txt
+    \ setlocal formatoptions=ant |
+    \ setlocal textwidth=80 |
+    \ setlocal wrapmargin=0 |
+    \ setlocal noautoindent |
+    \ setlocal nocindent |
+    \ setlocal nosmartindent |
+    \ setlocal indentexpr=  |
+    \ setlocal foldcolumn=10 |
+    \ setlocal columns=100
+
 let g:go_highlight_structs = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_functions = 1
