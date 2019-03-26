@@ -8,7 +8,12 @@ endif
 let g:molokai_original=1
 set nohlsearch
 set background=dark
-packloadall
+
+try
+    packloadall
+catch
+endtry
+
 silent! helptags ALL
 let python_highlight_all=1
 let mapleader=" "
