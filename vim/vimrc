@@ -96,8 +96,14 @@ au BufNewFile,BufRead *.go
     \ set fileformat=unix |
     \ set filetype=go
 
+let g:go_highlight_structs = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+
 " prose settings
-au BufNewFile, BufRead *.txt
+au BufNewFile,BufRead *.prose
     \ setlocal formatoptions=ant |
     \ setlocal textwidth=80 |
     \ setlocal wrapmargin=0 |
@@ -106,13 +112,10 @@ au BufNewFile, BufRead *.txt
     \ setlocal nosmartindent |
     \ setlocal indentexpr=  |
     \ setlocal foldcolumn=10 |
+    \ colorscheme zenburn |
+    \ set nonumber |
+    \ set norelativenumber |
     \ setlocal columns=100
-
-let g:go_highlight_structs = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
 
 " URL: http://vim.wikia.com/wiki/Example_vimrc
 " Authors: http://vim.wikia.com/wiki/Vim_on_Freenode
@@ -131,8 +134,6 @@ let g:go_highlight_build_constraints = 1
 " contents. Use this to allow intelligent auto-indenting for each filetype,
 " and for plugins that are filetype specific.
 filetype indent plugin on
-
-
 
 "------------------------------------------------------------
 " Must have options {{{1
@@ -154,25 +155,11 @@ filetype indent plugin on
 " crashes.
 set hidden
 
-" Note that not everyone likes working this way (with the hidden option).
-" Alternatives include using tabs or split windows instead of re-using the same
-" window as mentioned above, and/or either of the following options:
-" set confirm
-" set autowriteall
-
 " Better command-line completion
 set wildmenu
 
 " Show partial commands in the last line of the screen
 set showcmd
-
-"------------------------------------------------------------
-" Usability options {{{1
-"
-" These are options that users frequently set in their .vimrc. Some of them
-" change Vim's behaviour in ways which deviate from the true Vi way, but
-" which are considered to add usability. Which, if any, of these options to
-" use is very much a personal preference, but they are harmless.
 
 " Use case insensitive search, except when using capital letters
 set ignorecase
@@ -180,10 +167,6 @@ set smartcase
 
 " Allow backspacing over autoindent, line breaks and start of insert action
 set backspace=indent,eol,start
-
-" When opening a new line and no filetype-specific indenting is enabled, keep
-" the same indent as the line you're currently on. Useful for READMEs, etc.
-"set autoindent
 
 " Stop certain movements from always going to the first character of a line.
 " While this behaviour deviates from that of Vi, it does what most users
@@ -204,11 +187,6 @@ set confirm
 " Use visual bell instead of beeping when doing something wrong
 set visualbell
 
-" And reset the terminal code for the visual bell. If visualbell is set, and
-" this line is also included, vim will neither flash nor beep. If visualbell
-" is unset, this does nothing.
-"set t_vb=
-
 " Enable use of the mouse for all modes
 set mouse=a
 
@@ -222,23 +200,3 @@ set relativenumber
 
 " Quickly time out on keycodes, but never time out on mappings
 set notimeout ttimeout ttimeoutlen=200
-
-" Use <F11> to toggle between 'paste' and 'nopaste'
-"set pastetoggle=<F11>
-
-
-"------------------------------------------------------------
-" Mappings {{{1
-"
-" Useful mappings
-
-" Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy,
-" which is the default
-"map Y y$
-
-" Map <C-L> (redraw screen) to also turn off search highlighting until the
-" next search
-"nnoremap <C-L> :nohl<CR><C-L>
-
-
-"------------------------------------------------------------
