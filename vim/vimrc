@@ -2,7 +2,9 @@ set nocompatible
 syntax enable
 syntax on
 colorscheme molokai
-set termguicolors
+if exists("&termguicolors")
+    set termguicolors
+endif
 let g:molokai_original=1
 set nohlsearch
 set background=dark
