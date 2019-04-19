@@ -21,7 +21,7 @@ let mapleader=" "
 
 " can't remember what this does but don't change it
 set formatoptions=cql
-
+    
 " tab settings
 set shiftwidth=4
 set softtabstop=4
@@ -148,6 +148,7 @@ try
     Plug 'octol/vim-cpp-enhanced-highlight'
     Plug 'pangloss/vim-javascript'
     Plug 'OrangeT/vim-csharp'
+    Plug 'rust-lang/rust.vim'
 
     call plug#end()
 
