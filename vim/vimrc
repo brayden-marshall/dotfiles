@@ -21,6 +21,12 @@ let mapleader=" "
 
 " can't remember what this does but don't change it
 set formatoptions=cql
+
+" remap window split keybinds
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
     
 " tab settings
 set shiftwidth=4
