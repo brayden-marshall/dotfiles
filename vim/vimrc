@@ -39,11 +39,6 @@ au BufNewFile,BufRead *.html
     \ set tabstop=2 |
     \ set softtabstop=2
 
-au BufNewFile,BufRead *.js
-    \ set shiftwidth=2 |
-    \ set tabstop=2 |
-    \ set softtabstop=2
-
 " PEP 8 Style guide for python files "
 
 au BufNewFile,BufRead *.py
@@ -143,10 +138,6 @@ try
 
     Plug 'vim-python/python-syntax'
     Plug 'scrooloose/nerdtree'
-    Plug 'guns/vim-clojure-static'
-    Plug 'guns/vim-clojure-highlight'
-    Plug 'tpope/vim-fireplace'
-    Plug 'tpope/vim-classpath'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'vimwiki/vimwiki'
@@ -155,6 +146,8 @@ try
     Plug 'pangloss/vim-javascript'
     Plug 'OrangeT/vim-csharp'
     Plug 'rust-lang/rust.vim'
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'deoplete-plugins/deoplete-go', { 'do': 'make' }
 
     call plug#end()
 
