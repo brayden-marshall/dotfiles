@@ -7,3 +7,6 @@ then
     mkdir -p ~/.vim/colors
 fi
 ln -s --backup=numbered ~/dotfiles/vim/colors/molokai.vim ~/.vim/colors/molokai.vim
+
+# link .profile
+ln -s --backup=numbered ~/dotfiles/profile ~/.profile
