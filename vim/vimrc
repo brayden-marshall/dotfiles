@@ -59,6 +59,14 @@ au BufNewFile,BufRead *.go
     \ set fileformat=unix |
     \ set filetype=go
 
+" YAML file format settings
+au BufNewFile,BufRead *.yml
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2 |
+    \ set expandtab |
+    \ set autoindent 
+
 let g:go_highlight_structs = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_functions = 1
