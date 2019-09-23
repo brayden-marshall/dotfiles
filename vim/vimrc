@@ -144,17 +144,21 @@ set notimeout ttimeout ttimeoutlen=200
 try
     call plug#begin('~/.vim/plugged')
 
-    Plug 'vim-python/python-syntax'
+    "Misc.
     Plug 'scrooloose/nerdtree'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'vimwiki/vimwiki'
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh \| UpdateRemotePlugins' }
+
+    "Language Specific
+    Plug 'vim-python/python-syntax'
     Plug 'fatih/vim-go'
     Plug 'octol/vim-cpp-enhanced-highlight'
     Plug 'pangloss/vim-javascript'
     Plug 'OrangeT/vim-csharp'
     Plug 'rust-lang/rust.vim'
-    Plug 'Shougo/deoplete.nvim'
     Plug 'deoplete-plugins/deoplete-go', { 'do': 'make' }
 
     call plug#end()
