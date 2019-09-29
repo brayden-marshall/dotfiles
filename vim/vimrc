@@ -154,7 +154,6 @@ try
 
     "Language Specific
     Plug 'vim-python/python-syntax'
-    Plug 'fatih/vim-go'
     Plug 'octol/vim-cpp-enhanced-highlight'
     Plug 'pangloss/vim-javascript'
     Plug 'OrangeT/vim-csharp'
