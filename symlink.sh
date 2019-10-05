@@ -11,5 +11,8 @@ ln -s --backup=numbered ~/dotfiles/vim/colors/molokai.vim ~/.vim/colors/molokai.
 # link .profile
 ln -s --backup=numbered ~/dotfiles/profile ~/.profile
 
+# link zshrc
+ln -s --backup=numbered ~/dotfiles/zshrc ~/.zshrc
+
 # link xkb mappings
 ln -s --backup=numbered ~/dotfiles/xkb_mappings /usr/share/X11/xkb/symbols/pc
