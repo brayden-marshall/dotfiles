@@ -44,6 +44,6 @@ CASE_SENSITIVE="true"
 # Functions
 #=============================
 
-cl() {
-    cd "$@" && ls;
+chpwd() {
+    ls
 }
