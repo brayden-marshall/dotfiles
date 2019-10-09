@@ -40,6 +40,8 @@ fi
 # Turn on case-sensitive completion
 CASE_SENSITIVE="true"
 
+unsetopt share_history
+
 #=============================
 # Functions
 #=============================
