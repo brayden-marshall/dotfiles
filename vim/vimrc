@@ -2,7 +2,7 @@ set nocompatible
 set clipboard=unnamed
 syntax enable
 syntax on
-colorscheme molokai
+colorscheme gruvbox
 if exists("&termguicolors")
     set termguicolors
 endif
@@ -136,7 +136,6 @@ set relativenumber
 
 " Quickly time out on keycodes, but never time out on mappings
 set notimeout ttimeout ttimeoutlen=10
-
 
 " VIM-PLUG SECTION "
 " add plugins after call plug#begin() in form "
