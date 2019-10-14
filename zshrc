@@ -49,3 +49,10 @@ unsetopt share_history
 chpwd() {
     ls
 }
+
+#=============================
+# Misc.
+#=============================
+
+# set keyboard repeat rate and frequency
+xset r rate 200 50
