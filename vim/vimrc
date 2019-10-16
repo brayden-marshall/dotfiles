@@ -170,8 +170,15 @@ try
     ":autocmd FileType vimwiki map d :VimwikiMakeDiaryNote
 
     " vim-airline   vim-airline-themes"
-
-    let g:airline_theme='base16_monokai'
+    if g:colors_name=='gruvbox'
+        let g:airline_theme='base16_gruvbox_dark_hard'
+    elseif g:colors_name=='molokai'
+        let g:airline_theme='base16_molokai'
+    elseif g:colors_name=='dracula'
+        let g:airline_theme='dracula'
+    else
+        let g:airline_theme='base16_molokai'
+    endif
 
     " vim-python/python-syntax settings override "
 
