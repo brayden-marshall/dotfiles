@@ -30,7 +30,3 @@ fi
 export PATH=$PATH:/usr/local/go/bin
 
 export PATH="$HOME/.cargo/bin:$PATH"
-
-# ensure that keyboard layout is set properly
-setxkbmap -layout dvorak
-setxkbmap -option "caps:escape"
