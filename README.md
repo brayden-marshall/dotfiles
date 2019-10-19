@@ -15,3 +15,4 @@ My personal Linux dotfiles and config files.
 ## Random Notes
 
 - If tmux is bugging out and saying 'tmux-256color' : unknown terminal, install the `ncurses-terminal` package
+- To get neovim to recognize the .vimrc, type :nvim-from-vim in a neovim instance and follow the instructions
