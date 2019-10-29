@@ -156,6 +156,7 @@ try
     Plug 'octol/vim-cpp-enhanced-highlight'
     Plug 'pangloss/vim-javascript'
     Plug 'OrangeT/vim-csharp'
+    Plug 'Omnisharp/omnisharp-vim'
     Plug 'rust-lang/rust.vim'
     Plug 'deoplete-plugins/deoplete-go', { 'do': 'make' }
 
