@@ -50,6 +50,12 @@ chpwd() {
     ls
 }
 
+school() {
+    if [ -d ~/Camosun/fall_2019 ]; then
+        cd ~/Camosun/fall_2019/
+    fi
+}
+
 #=============================
 # Misc.
 #=============================
