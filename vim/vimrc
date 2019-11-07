@@ -1,5 +1,5 @@
 set nocompatible
-set clipboard=unnamed
+set clipboard+=unnamedplus
 syntax enable
 syntax on
 colorscheme gruvbox
@@ -33,6 +33,12 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 set autoindent
+
+au BufNewFile,BufRead *.conf
+    \ set autoindent |
+    \ set noexpandtab |
+    \ set tabstop=4 |
+    \ set shiftwidth=4
 
 au BufNewFile,BufRead *.html
     \ set shiftwidth=2 |
@@ -152,6 +158,7 @@ try
     Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh \| UpdateRemotePlugins' }
 
     "Language Specific
+    Plug 'leafgarland/typescript-vim'
     Plug 'vim-python/python-syntax'
     Plug 'octol/vim-cpp-enhanced-highlight'
     Plug 'pangloss/vim-javascript'
