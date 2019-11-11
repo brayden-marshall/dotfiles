@@ -159,6 +159,7 @@ try
 
     "Language Specific
     Plug 'leafgarland/typescript-vim'
+    Plug 'kongo2002/fsharp-vim'
     Plug 'vim-python/python-syntax'
     Plug 'octol/vim-cpp-enhanced-highlight'
     Plug 'pangloss/vim-javascript'

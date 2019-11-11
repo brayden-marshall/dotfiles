@@ -33,6 +33,10 @@ if [ -x `which nvim` ]; then
     alias vim="nvim"
 fi
 
+if [ -x `which apt-get` ]; then
+    alias esketit="sudo apt-get update && sudo apt-get upgrade"
+fi
+
 #=============================
 # Options
 #=============================
