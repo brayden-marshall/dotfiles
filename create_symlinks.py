@@ -19,17 +19,32 @@ dirs_to_link = {
 }
 
 for key in files_to_link:
+    src = home_dir + key
+    dst = home_dir + files_to_link[key]
     # if file isn't already linked
-    if not Path(home_dir + files_to_link[key]).is_symlink():
+    if not Path(dst).is_symlink():
         output = subprocess.check_output(
-            ["ln", "-s", "--backup=numbered", home_dir + key, home_dir + files_to_link[key]]
+            ["ln", "-s", "--backup=numbered", src, dst]
         )
-        print(output)
+        if output != b'':
+            print("Error: " + output)
 
 for key in dirs_to_link:
-    # if dir isn't already linked
-    if not Path(home_dir + dirs_to_link[key]).is_symlink():
+    src = home_dir + key
+    dst = home_dir + dirs_to_link[key]
+
+    # if dir already exists as a non symlink, then rename it with a .bak suffix
+    if Path(dst).is_dir() and not Path(dst).is_symlink():
         output = subprocess.check_output(
-            ["ln", "-sf", home_dir + key, home_dir + dirs_to_link[key]]
+            ["mv", dst, f"{dst}.bak"]
         )
-        print(output)
+        if output != b'':
+            print("Error: " + output)
+
+    # if dir isn't already linked
+    if not Path(dst).is_symlink():
+        output = subprocess.check_output(
+            ["ln", "-sf", src, dst]
+        )
+        if output != b'':
+            print("Error: " + output)

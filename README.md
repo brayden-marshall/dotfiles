@@ -2,11 +2,9 @@
 
 My personal Linux dotfiles and config files.
 
-## Setup on fresh Ubuntu 18.04 install
+## Setup on fresh install
 
-- Link config files: Run `bash symlink.sh` to create symbolic links from the files in the `$HOME` directory to the files in this repository. This will link the following files:
-    - vimrc (~/.vimrc)
-    - profile (~/.profile)
+- Link config files: Run the `create_symlinks.py` script to create symbolic links from the files/directories in the `$HOME` directory to the files/directories in this repository. This will link the following files:
 
 - Terminal Theme: go to <https://github.com/Mayccoll/Gogh>, run the script, and choose the Monokai Dark theme.
 
