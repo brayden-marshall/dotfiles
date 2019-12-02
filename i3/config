@@ -72,10 +72,10 @@ bindsym Mod4+Shift+Up move up
 bindsym Mod4+Shift+Right move right
 
 # split in horizontal orientation
-bindsym Mod4+s split h
+bindsym Mod4+s split v
 
 # split in vertical orientation
-bindsym Mod4+v split v
+bindsym Mod4+v split h
 
 # enter fullscreen mode for the focused container
 bindsym Mod4+f fullscreen toggle
@@ -161,16 +161,46 @@ mode "resize" {
 
 bindsym Mod4+r mode "resize"
 
+# i3-gaps settings
+for_window [class=".*"] border pixel 0
+smart_borders on
+gaps outer 5
+gaps inner 10
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-        status_command i3status
-        position top
-}
+#bar {
+#    status_command i3status
+#    position bottom
+#    colors {
+#          background #504945
+#          statusline #d5c4a1
+#          separator #3c3836 
+#          focused_workspace #3c3836 #32302f #fabd2f
+#          active_workspace #3c3836 #504945 #d5c4a1
+#          inactive_workspace #3c3836 #504945 #d5c4a1
+#          urgent_workspace   #7c6f64 #fabd2f #3c3836
+#    }
+#}
 
 # Set keyboard layout
 exec "setxkbmap -layout dvorak"
 exec "setxkbmap -option caps:escape"
 
+# Set natural scrolling (inverted)
+exec --no-startup-id synclient HorizEdgeScroll=1 VertEdgeScroll=1 VertScrollDelta=-111
+
 # key repeat rate
 exec --no-startup-id xset r rate 185 40
+
+# set background
+exec --no-startup-id feh --big-fill $BACKGROUND_IMAGE
+
+# start polybar
+exec_always --no-startup-id ~/.i3/polybar.sh
+
+# colorscheme
+client.focused          #3c3836 #32302f #fabd2f #fabd2f
+client.focused_inactive #3c3836 #504945 #d5c4a1 #504945
+client.unfocused        #3c3836 #504945 #d5c4a1 #504945
+client.urgent           #7c6f64 #fabd2f #3c3836 #fabd2f

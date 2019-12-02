@@ -16,6 +16,7 @@ files_to_link = {
 dirs_to_link = {
     "dotfiles/vim/colors": ".vim/colors",
     "dotfiles/i3": ".i3",
+    "dotfiles/i3": ".config/i3",
 }
 
 for key in files_to_link:

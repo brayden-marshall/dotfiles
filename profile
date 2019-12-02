@@ -30,3 +30,9 @@ fi
 export PATH=$PATH:/usr/local/go/bin
 
 export PATH="$HOME/.cargo/bin:$PATH"
+
+background_image_file="$HOME/Pictures/wallpapers/vaporwave/Anime_girlwave.png"
+if [ -f $background_image_file ]; then
+    echo "Hello" > ./test.txt
+    feh --bg-fill $background_image_file
+fi
