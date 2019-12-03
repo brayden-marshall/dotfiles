@@ -28,8 +28,8 @@ font pango:monospace 8
 # the arrows is not convenient
 set $up k
 set $down j
-set $left l
-set $right h
+set $left h
+set $right l
 
 # use Mouse+Mod4 to drag floating windows to their wanted position
 floating_modifier Mod4
@@ -162,10 +162,13 @@ mode "resize" {
 bindsym Mod4+r mode "resize"
 
 # i3-gaps settings
-for_window [class=".*"] border pixel 0
+for_window [class=".*"] border pixel 3
 smart_borders on
 gaps outer 5
 gaps inner 10
+
+# don't wrap around edges when switching between windows
+focus_wrapping no
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -197,7 +200,7 @@ exec --no-startup-id xset r rate 185 40
 exec --no-startup-id feh --big-fill $BACKGROUND_IMAGE
 
 # start polybar
-exec_always --no-startup-id ~/.i3/polybar.sh
+exec_always --no-startup-id $HOME/dotfiles/polybar/polybar.sh
 
 # colorscheme
 client.focused          #3c3836 #32302f #fabd2f #fabd2f

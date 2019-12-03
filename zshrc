@@ -37,6 +37,14 @@ if [ -x `which apt-get` ]; then
     alias esketit="sudo apt-get update && sudo apt-get upgrade"
 fi
 
+if [ -x `which exa` ]; then
+    alias ls="exa"
+fi
+
+if [ -d "$HOME/Camosun/fall_2019/" ]; then
+    alias school="$HOME/Camosun/fall_2019"
+fi
+
 #=============================
 # Options
 #=============================
@@ -45,19 +53,12 @@ fi
 CASE_SENSITIVE="true"
 
 unsetopt share_history
-
 #=============================
 # Functions
 #=============================
 
 chpwd() {
     ls
-}
-
-school() {
-    if [ -d ~/Camosun/fall_2019 ]; then
-        cd ~/Camosun/fall_2019/
-    fi
 }
 
 #=============================

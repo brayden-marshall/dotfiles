@@ -26,10 +26,10 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-# adding Golang to PATH
+# environment variables
 export PATH=$PATH:/usr/local/go/bin
-
 export PATH="$HOME/.cargo/bin:$PATH"
+export XDG_CONFIG_HOME="$HOME/.config"
 
 background_image_file="$HOME/Pictures/wallpapers/vaporwave/Anime_girlwave.png"
 if [ -f $background_image_file ]; then
