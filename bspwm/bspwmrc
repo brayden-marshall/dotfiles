@@ -1,18 +1,41 @@
-#! /bin/sh
+#! /bin/bash
+
+# set keyboard layout mappings
+setxkbmap dvorak
+setxkbmap -option caps:escape
 
 # start sxhkd hotkey daemon
 sxhkd &
 
-# settings for multiple monitors
-bspc monitor -d I II III IV V VI VII VIII IX X
+# set key repeat rate
+xset r rate 185 40
+
+# set synclient scrolling option
+synclient HorizEdgeScroll=1 VertEdgeScroll=1 VertScrollDelta=-111
+
+# start polybar
+$HOME/dotfiles/polybar/polybar.sh
+
+# set background image
+feh --bg-fill $BACKGROUND_IMAGE
+
+# monitor settings
+#bspc monitor -d I II III IV V VI VII VIII IX X
+if [[ `xrandr -q | grep ' connected' | cut -d ' ' -f1 | grep HDMI-2` == '' ]]; then
+    bspc monitor -d I II III IV V VI VII VIII IX X
+else
+    bspc monitor eDP-1 -d I
+    bspc monitor HDMI-2 -d II III IV V VI VII VIII IX X
+fi
 
 # window settings
 bspc config border_width         2
 bspc config window_gap          12
 
 # split behaviour
-bspc config split_ratio          0.52
+bspc config split_ratio          0.50
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
-bspc rule -a firefox desktop='^2'
+# enable mouse?
+bspc config click_to_focus       button1
