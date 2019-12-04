@@ -45,6 +45,10 @@ if [ -d "$HOME/Camosun/fall_2019/" ]; then
     alias school="$HOME/Camosun/fall_2019"
 fi
 
+if [ -x `which alacritty` ]; then
+    alias alacritty="WIN_HIDPI_FACTOR=1.0 alacritty"
+fi
+
 #=============================
 # Options
 #=============================

@@ -197,7 +197,7 @@ exec --no-startup-id synclient HorizEdgeScroll=1 VertEdgeScroll=1 VertScrollDelt
 exec --no-startup-id xset r rate 185 40
 
 # set background
-exec --no-startup-id feh --big-fill $BACKGROUND_IMAGE
+exec --no-startup-id feh --bg-fill $BACKGROUND_IMAGE
 
 # start polybar
 exec_always --no-startup-id $HOME/dotfiles/polybar/polybar.sh

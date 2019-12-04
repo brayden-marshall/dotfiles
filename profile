@@ -31,8 +31,11 @@ export PATH=$PATH:/usr/local/go/bin
 export PATH="$HOME/.cargo/bin:$PATH"
 export XDG_CONFIG_HOME="$HOME/.config"
 
-background_image_file="$HOME/Pictures/wallpapers/vaporwave/Anime_girlwave.png"
+# set background image
+background_image_file="$HOME/Pictures/wallpapers/glitch_art/glitch_moon.png"
 if [ -f $background_image_file ]; then
-    echo "Hello" > ./test.txt
     feh --bg-fill $background_image_file
 fi
+
+# alacritty env variable for consistent font size
+export WINIT_HIDPI_FACTOR=1.0

@@ -11,6 +11,7 @@ files_to_link = {
     "dotfiles/profile": ".profile",
     "dotfiles/zshrc": ".zshrc",
     "dotfiles/tmux.conf": ".tmux.conf",
+    "dotfiles/alacritty.yml": ".alacritty.yml",
 }
 
 dirs_to_link = {
