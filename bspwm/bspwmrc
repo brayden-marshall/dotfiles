@@ -19,6 +19,10 @@ $HOME/dotfiles/polybar/polybar.sh
 # set background image
 feh --bg-fill $BACKGROUND_IMAGE
 
+if [ -x `which redshift` ]; then
+    redshift &
+fi
+
 # monitor settings
 #bspc monitor -d I II III IV V VI VII VIII IX X
 if [[ `xrandr -q | grep ' connected' | cut -d ' ' -f1 | grep HDMI-2` == '' ]]; then

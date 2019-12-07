@@ -12,6 +12,7 @@ files_to_link = {
     "dotfiles/zshrc": ".zshrc",
     "dotfiles/tmux.conf": ".tmux.conf",
     "dotfiles/alacritty.yml": ".alacritty.yml",
+    "dotfiles/dunstrc": ".config/dunst/dunstrc",
 }
 
 dirs_to_link = {
