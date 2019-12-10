@@ -6,6 +6,7 @@ import subprocess
 
 home_dir = os.getenv('HOME') + "/"
 
+# all paths are relative to home directory
 files_to_link = {
     "dotfiles/vim/vimrc": ".vimrc",
     "dotfiles/profile": ".profile",
@@ -13,6 +14,7 @@ files_to_link = {
     "dotfiles/tmux.conf": ".tmux.conf",
     "dotfiles/alacritty.yml": ".alacritty.yml",
     "dotfiles/dunstrc": ".config/dunst/dunstrc",
+    "dotfiles/xinitrc": ".xinitrc",
 }
 
 dirs_to_link = {

@@ -16,6 +16,9 @@ synclient HorizEdgeScroll=1 VertEdgeScroll=1 VertScrollDelta=-111
 # start polybar
 $HOME/dotfiles/polybar/polybar.sh
 
+# start dunst
+systemctl --user restart dunst
+
 # set background image
 feh --bg-fill $BACKGROUND_IMAGE
 
