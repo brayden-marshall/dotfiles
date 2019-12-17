@@ -2,6 +2,21 @@
 
 My personal Linux dotfiles and config files.
 
+## Dependencies for full setup
+
+- bspwm
+- sxhkd
+- alacritty
+- dmenu
+- feh
+- dunst
+- polybar
+- tmux
+- neovim
+- zsh
+- redshift
+- synclient (only for laptops)
+
 ## Setup on fresh install
 
 - Link config files: Run the `create_symlinks.py` script to create symbolic links from the files/directories in the `$HOME` directory to the files/directories in this repository.

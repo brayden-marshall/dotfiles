@@ -29,15 +29,15 @@ export ARCHFLAGS="-arch x86_64"
 # Aliases
 #=============================
 
-if [ -x `which nvim` ]; then
+if [ `command -v nvim` ]; then
     alias vim="nvim"
 fi
 
-if [ -x `which apt-get` ]; then
+if [ `command -v apt-get` ]; then
     alias esketit="sudo apt-get update && sudo apt-get upgrade"
 fi
 
-if [ -x `which exa` ]; then
+if [ `command -v exa` ]; then
     alias ls="exa"
 fi
 
@@ -45,7 +45,7 @@ if [ -d "$HOME/Camosun/fall_2019/" ]; then
     alias school="$HOME/Camosun/fall_2019"
 fi
 
-if [ -x `which alacritty` ]; then
+if [ `command -v alacritty` ]; then
     alias alacritty="WIN_HIDPI_FACTOR=1.0 alacritty"
 fi
 
