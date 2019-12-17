@@ -32,7 +32,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export XDG_CONFIG_HOME="$HOME/.config"
 
 # set background image
-background_image_file="$HOME/Pictures/wallpapers/glitch_art/glitch_moon.png"
+background_image_file="$HOME/dotfiles/wallpapers/glitch_moon.png"
 if [ -f $background_image_file ]; then
     feh --bg-fill $background_image_file
 fi
