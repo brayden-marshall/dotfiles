@@ -58,7 +58,7 @@ font-2 = siji:pixelsize=10;1
 
 modules-left = bspwm
 modules-center = 
-modules-right = filesystem memory cpu battery temperature date powermenu
+modules-right = filesystem memory cpu battery temperature date pulseaudio powermenu
 
 tray-position = right
 tray-padding = 2
