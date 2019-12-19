@@ -5,25 +5,25 @@
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
     echo "Oh my zsh is not installed"
     echo "Go to https://github.com/robbyrussell/oh-my-zsh to install"
-    exit 1
+else
+    export ZSH="$HOME/.oh-my-zsh"
+    ZSH_THEME="robbyrussell"
+    plugins=()
+    source $ZSH/oh-my-zsh.sh
+
+    #=============================
+    # Exports
+    #=============================
+
+    # PATH
+    export PATH=$PATH
+    # Path to your oh-my-zsh installation.
+    #export ZSH="/home/brayden-marshall/.oh-my-zsh"
+
+    # Makes stuff easier
+    export ARCHFLAGS="-arch x86_64"
 fi
 
-export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="robbyrussell"
-plugins=()
-source $ZSH/oh-my-zsh.sh
-
-#=============================
-# Exports
-#=============================
-
-# PATH
-export PATH=$PATH
-# Path to your oh-my-zsh installation.
-#export ZSH="/home/brayden-marshall/.oh-my-zsh"
-
-# Makes stuff easier
-export ARCHFLAGS="-arch x86_64"
 
 #=============================
 # Aliases
