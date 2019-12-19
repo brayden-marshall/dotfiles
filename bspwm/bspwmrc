@@ -4,6 +4,13 @@
 setxkbmap dvorak
 setxkbmap -option caps:escape
 
+# set touchpad settings if xinput (and libinput) is installed
+if [ `command -v xinput` ]; then
+    xinput --set-prop 15 "libinput Tapping Enabled" 1
+    xinput --set-prop 15 "libinput Natural Scrolling Enabled" 1
+    xinput --set-prop 15 "libinput Disable While Typing Enabled" 1
+fi
+
 # start sxhkd hotkey daemon
 sxhkd &
 
@@ -11,12 +18,12 @@ sxhkd &
 xset r rate 185 40
 
 # set synclient scrolling option
-synclient HorizEdgeScroll=1 VertEdgeScroll=1 VertScrollDelta=-111
+#synclient HorizEdgeScroll=1 VertEdgeScroll=1 VertScrollDelta=-111
 
 # start polybar
 $HOME/dotfiles/polybar/polybar.sh
 
-# start dunst
+# a hack to get dunst to start correctly
 systemctl --user restart dunst
 
 # set background image
@@ -28,11 +35,10 @@ fi
 
 # monitor settings
 #bspc monitor -d I II III IV V VI VII VIII IX X
-if [[ `xrandr -q | grep ' connected' | cut -d ' ' -f1 | grep HDMI-2` == '' ]]; then
+if [[ `xrandr -q | grep ' connected' | cut -d ' ' -f1 | grep HDMI2` == '' ]]; then
     bspc monitor -d I II III IV V VI VII VIII IX X
 else
-    bspc monitor eDP-1 -d I
-    bspc monitor HDMI-2 -d II III IV V VI VII VIII IX X
+    bspc monitor HDMI2 -d I II III IV V VI VII VIII IX X
 fi
 
 # window settings

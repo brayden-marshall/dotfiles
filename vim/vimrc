@@ -204,4 +204,5 @@ try
     let g:python_highlight_all=1
     let g:python_highlight_space_errors=0
 catch
+    echo "Vim-Plug is not installed"
 endtry
