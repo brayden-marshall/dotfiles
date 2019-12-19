@@ -15,6 +15,7 @@ files_to_link = {
     "dotfiles/alacritty.yml": ".alacritty.yml",
     "dotfiles/dunstrc": ".config/dunst/dunstrc",
     "dotfiles/xinitrc": ".xinitrc",
+    "dotfiles/vim/init.vim": ".config/nvim/init.vim",
 }
 
 dirs_to_link = {
