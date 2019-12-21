@@ -50,7 +50,6 @@ au BufNewFile,BufRead *.html
     \ set expandtab
 
 " PEP 8 Style guide for python files "
-
 au BufNewFile,BufRead *.py
     \ set tabstop=4 |
     \ set softtabstop=4 |
@@ -168,17 +167,25 @@ try
     Plug 'Shougo/deoplete.nvim'
 
     "Language Specific
+    "Plug 'pangloss/vim-javascript'
     Plug 'leafgarland/typescript-vim'
+    "Plug 'peitalin/vim-jsx-typescript'
+    Plug 'HerringtonDarkholme/yats.vim'
     Plug 'MaxMEllon/vim-jsx-pretty'
+
     Plug 'kongo2002/fsharp-vim'
+
     Plug 'vim-python/python-syntax'
     Plug 'octol/vim-cpp-enhanced-highlight'
-    Plug 'pangloss/vim-javascript'
+
     Plug 'OrangeT/vim-csharp'
     Plug 'Omnisharp/omnisharp-vim'
+
     Plug 'rust-lang/rust.vim'
 
     call plug#end()
+
+    let NERDTreeMinimalUI = 1
 
     " vimwiki stuff
     let g:vimwiki_list = [

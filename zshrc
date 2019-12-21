@@ -49,6 +49,17 @@ if [ `command -v alacritty` ]; then
     alias alacritty="WIN_HIDPI_FACTOR=1.0 alacritty"
 fi
 
+# aliases for common applications so I don't have to remember the
+# specific application names
+
+if [ `command -v feh` ]; then
+    alias image="feh"
+fi
+
+if [ `command -v evince` ]; then
+    alias pdf="evince"
+fi
+
 #=============================
 # Options
 #=============================
