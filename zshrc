@@ -60,6 +60,10 @@ if [ `command -v evince` ]; then
     alias pdf="evince"
 fi
 
+if [ `command -v wicd-gtk` ]; then
+    alias network="wicd-gtk"
+fi
+
 #=============================
 # Options
 #=============================

@@ -5,10 +5,11 @@ setxkbmap dvorak
 setxkbmap -option caps:escape
 
 # set touchpad settings if xinput (and libinput) is installed
+# 13 is the ID of the touchpad input device from xinput
 if [ `command -v xinput` ]; then
-    xinput --set-prop 15 "libinput Tapping Enabled" 1
-    xinput --set-prop 15 "libinput Natural Scrolling Enabled" 1
-    xinput --set-prop 15 "libinput Disable While Typing Enabled" 1
+    xinput --set-prop 13 "libinput Tapping Enabled" 1
+    xinput --set-prop 13 "libinput Natural Scrolling Enabled" 1
+    xinput --set-prop 13 "libinput Disable While Typing Enabled" 1
 fi
 
 # start sxhkd hotkey daemon
@@ -29,8 +30,12 @@ systemctl --user restart dunst
 # set background image
 feh --bg-fill $BACKGROUND_IMAGE
 
-if [ -x `which redshift` ]; then
+if [ `command -v reshift` ]; then
     redshift &
+fi
+
+if [ `command -v wicd-gtk` ]; then
+    wicd-gtk --tray &
 fi
 
 # monitor settings
