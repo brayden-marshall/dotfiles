@@ -1,41 +1,63 @@
-set nocompatible
-set clipboard+=unnamedplus
-syntax enable
-syntax on
+" enable syntax processing
+if !exists("g:syntax_on")
+    syntax enable
+endif
+
+" colorscheme settings
 colorscheme gruvbox
+let g:molokai_original=1
+set background=dark
+
+" if terminal supports 'termguicolors', turn it on
 if exists("&termguicolors")
     set termguicolors
 endif
-let g:molokai_original=1
-set nohlsearch
-set background=dark
 
-try
-    packloadall
-catch
-endtry
-
-silent! helptags ALL
-let python_highlight_all=1
+" map leader key to space bar
 let mapleader=" "
 
-" can't remember what this does but don't change it
-set formatoptions=cql
-
 " remap window split keybinds
+" uses CTRL+<h,j,k,l> to navigate windows
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+" remap code-folding keybinds
+" leader+<C,O> closes, opens folds recursively up to the top level
+" leader+<c,o> closes, opens the current fold
+" leader+<f,F> closes, opens all folds in the buffer
+nnoremap <leader>c zc
+nnoremap <leader>C zC
+nnoremap <leader>o zo
+nnoremap <leader>O zO
+nnoremap <leader>f zM
+" zz to center the screen on your cursor after opening folds
+nnoremap <leader>F zR zz
+
 " remap double leader press to switch to last visited buffer
 nnoremap <leader><leader> <C-^>
-    
-" tab settings
+
+" *********************************************
+" Tab/Spacing Settings For Different File Types
+" *********************************************
+
+" Attempt to determine the type of a file based on its name and possibly its
+" contents. Use this to allow intelligent auto-indenting for each filetype,
+" and for plugins that are filetype specific.
+filetype indent plugin on
+
+" use 4 spaces as a tab/shift width
 set shiftwidth=4
 set softtabstop=4
+" replace tabs with spaces
 set expandtab
+" automatically indent when going to a new line
 set autoindent
+" smart autoindenting when starting a new line
+set smartindent
+" use 'shiftwidth' to insert and delete blanks
+set smarttab
 
 au BufNewFile,BufRead *.conf
     \ set autoindent |
@@ -68,6 +90,13 @@ au BufNewFile,BufRead *.go
     \ set fileformat=unix |
     \ set filetype=go
 
+" turn on golang highlighting options
+let g:go_highlight_structs = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+
 " YAML file format settings
 au BufNewFile,BufRead *.yml
     \ set tabstop=2 |
@@ -75,12 +104,6 @@ au BufNewFile,BufRead *.yml
     \ set shiftwidth=2 |
     \ set expandtab |
     \ set autoindent 
-
-let g:go_highlight_structs = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
 
 " prose settings
 au BufNewFile,BufRead *.prose
@@ -96,10 +119,11 @@ au BufNewFile,BufRead *.prose
     \ set norelativenumber |
     \ setlocal columns=100
 
-" Attempt to determine the type of a file based on its name and possibly its
-" contents. Use this to allow intelligent auto-indenting for each filetype,
-" and for plugins that are filetype specific.
-filetype indent plugin on
+" ****************************
+" Misc. Editor Settings
+" ****************************
+
+" hide rather than unload buffers when they are abandoned (closed)
 set hidden
 
 " Better command-line completion
@@ -135,7 +159,7 @@ set visualbell
 set mouse=a
 
 " Set the command window height to 2 lines, to avoid many cases of having to
-" "press <Enter> to continue"
+" 'press <Enter> to continue'
 set cmdheight=2
 
 " Display line numbers on the left
@@ -153,11 +177,83 @@ set undofile
 set splitright
 set splitbelow
 
-" VIM-PLUG SECTION "
-" add plugins after call plug#begin() in form "
-" Plug 'path/to/plugin' "
+" set clipboard to use system clipboard
+set clipboard+=unnamedplus
+
+" don't highlight text when searching
+set nohlsearch
+
+" probably useless, but keep just in case
+set nocompatible
+
+" can't remember what this does but don't change it
+set formatoptions=cql
+
+" draw a line at 100 columns
+set colorcolumn=100
+
+" automatically change to the directory of the current file when switching
+" files/buffers
+set autochdir
+
+" Save whenever switching windows or leaving vim. This is useful when running
+" the tests inside vim without having to save all files first.
+au FocusLost,WinLeave * :silent! noautocmd wa
+
+" Trigger autoread when changing buffers or coming back to vim.
+au FocusGained,BufEnter * :silent! !
+
+" wrapped lines will continue at the same indentation level
+set breakindent
+
+" set the file browser to use the current buffer's directory
+set browsedir=buffer
+
+" code folds will be automatically created based on the syntax settings of the
+" current buffer
+set foldmethod=syntax
+
+" start with code completely unfolded when opening a file
+set nofoldenable
+
+" screen will not be redrawn when executing macros, registers and some
+" other commands (should improve performance)
+set lazyredraw
+
+" round indent number to a multiple of 'shiftwidth' when using '>' and '<'
+" keys to indent lines
+set shiftround
+
+" when in selection or visual mode, allows the cursor to go to parts it would
+" not normally be able to go, such as off the end of a line.
+set virtualedit=block,onemore
+
+" ***************************
+" Vim-Plug Section
+" ***************************
 try
-    call plug#begin('~/.vim/plugged')
+    call plug#begin(expand('~/.vim/plugged'))
+
+    " Javascript/Typescript
+    Plug 'leafgarland/typescript-vim'
+    Plug 'HerringtonDarkholme/yats.vim'
+    Plug 'MaxMEllon/vim-jsx-pretty'
+
+    " F#
+    Plug 'kongo2002/fsharp-vim'
+
+    " C#
+    Plug 'OrangeT/vim-csharp'
+    Plug 'Omnisharp/omnisharp-vim'
+
+    " Python
+    Plug 'vim-python/python-syntax'
+
+    " C++
+    Plug 'octol/vim-cpp-enhanced-highlight'
+
+    " Rust
+    Plug 'rust-lang/rust.vim'
 
     "Misc.
     Plug 'scrooloose/nerdtree'
@@ -166,50 +262,36 @@ try
     Plug 'vimwiki/vimwiki'
     Plug 'Shougo/deoplete.nvim'
 
-    "Language Specific
-    "Plug 'pangloss/vim-javascript'
-    Plug 'leafgarland/typescript-vim'
-    "Plug 'peitalin/vim-jsx-typescript'
-    Plug 'HerringtonDarkholme/yats.vim'
-    Plug 'MaxMEllon/vim-jsx-pretty'
-
-    Plug 'kongo2002/fsharp-vim'
-
-    Plug 'vim-python/python-syntax'
-    Plug 'octol/vim-cpp-enhanced-highlight'
-
-    Plug 'OrangeT/vim-csharp'
-    Plug 'Omnisharp/omnisharp-vim'
-
-    Plug 'rust-lang/rust.vim'
-
     call plug#end()
-
-    let NERDTreeMinimalUI = 1
-
-    " vimwiki stuff
-    let g:vimwiki_list = [
-                           \{'path': '~/Documents/vimwiki/'}
-                        \]
-
-    au BufRead,BufNewFile *.wiki set filetype=vimwiki
-    ":autocmd FileType vimwiki map d :VimwikiMakeDiaryNote
-
-    " vim-airline   vim-airline-themes"
-    if g:colors_name=='gruvbox'
-        let g:airline_theme='base16_gruvbox_dark_hard'
-    elseif g:colors_name=='molokai'
-        let g:airline_theme='base16_molokai'
-    elseif g:colors_name=='dracula'
-        let g:airline_theme='dracula'
-    else
-        let g:airline_theme='base16_molokai'
-    endif
-
-    " vim-python/python-syntax settings override "
-
-    let g:python_highlight_all=1
-    let g:python_highlight_space_errors=0
 catch
     echo "Vim-Plug is not installed"
 endtry
+
+" ***************************
+" Plugin specific settings
+" ***************************
+
+let NERDTreeMinimalUI = 1
+
+" vimwiki stuff
+let g:vimwiki_list = [
+                       \{'path': '~/Documents/vimwiki/'}
+                    \]
+
+au BufRead,BufNewFile *.wiki set filetype=vimwiki
+":autocmd FileType vimwiki map d :VimwikiMakeDiaryNote
+
+" vim-airline   vim-airline-themes"
+if g:colors_name=='gruvbox'
+    let g:airline_theme='base16_gruvbox_dark_hard'
+elseif g:colors_name=='molokai'
+    let g:airline_theme='base16_molokai'
+elseif g:colors_name=='dracula'
+    let g:airline_theme='dracula'
+else
+    let g:airline_theme='base16_molokai'
+endif
+
+" vim-python/python-syntax settings override "
+let g:python_highlight_all=1
+let g:python_highlight_space_errors=0
