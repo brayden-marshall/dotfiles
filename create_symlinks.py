@@ -23,7 +23,8 @@ dirs_to_link = {
     "dotfiles/i3": ".i3",
     "dotfiles/i3": ".config/i3",
     "dotfiles/bspwm": ".config/bspwm",
-    "dotfiles/sxhkd": ".config/sxhkd"
+    "dotfiles/sxhkd": ".config/sxhkd",
+    "dotfiles/rofi": ".config/rofi",
 }
 
 for key in files_to_link:
