@@ -34,7 +34,8 @@ export XDG_CONFIG_HOME="$HOME/.config"
 # set background image
 background_image_file="$HOME/dotfiles/wallpapers/glitch_rectangle.png"
 if [ -f $background_image_file ]; then
-    feh --bg-fill $background_image_file
+    #feh --bg-fill $background_image_file
+    export BACKGROUND_IMAGE_FILE=$background_image_file
 fi
 
 # alacritty env variable for consistent font size

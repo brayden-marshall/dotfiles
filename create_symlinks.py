@@ -16,6 +16,7 @@ files_to_link = {
     "dotfiles/dunstrc": ".config/dunst/dunstrc",
     "dotfiles/xinitrc": ".xinitrc",
     "dotfiles/vim/init.vim": ".config/nvim/init.vim",
+    "dotfiles/fehbg": ".fehbg",
 }
 
 dirs_to_link = {

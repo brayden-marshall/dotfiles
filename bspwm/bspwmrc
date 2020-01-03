@@ -28,7 +28,7 @@ $HOME/dotfiles/polybar/polybar.sh
 systemctl --user restart dunst
 
 # set background image
-feh --bg-fill $BACKGROUND_IMAGE
+~/.fehbg &
 
 if [ `command -v reshift` ]; then
     redshift &
