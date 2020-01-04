@@ -53,7 +53,7 @@ padding-right = 2
 module-margin-right = 0
 module-margin-left = 0
 
-modules-right = battery separator volume separator date
+modules-right = memory separator cpu separator temperature separator volume separator date separator battery separator
 modules-center = mpd 
 modules-left = bspwm
 
@@ -72,8 +72,47 @@ tray-padding = 0
 tray-transparent = true
 tray-scale = 1.0
 
-font-0 = "monospace:size=8;2"
-font-1 = "FontAwesome:size=8;2"
+font-0 = "monospace:size=10;2"
+font-1 = "FontAwesome:size=10;2"
+
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+warn-temperature = 60
+
+format = <ramp> <label>
+format-padding = 2
+format-underline = ${colors.white}
+format-warn = <ramp> <label-warn>
+format-warn-underline = ${self.format-underline}
+
+format-prefix = "Temp:"
+format-prefix-foreground = ${colors.green}
+
+label = "%temperature-c%"
+label-warn = %temperature-c%
+label-warn-foreground = ${colors.secondary}
+
+ramp-0 =
+ramp-foreground = ${colors.foreground-alt}
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = "CPU:"
+format-prefix-foreground = ${colors.blue}
+format-underline = ${colors.white}
+format-padding = 2
+label = %percentage:2%%
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = "Mem: "
+format-prefix-foreground = ${colors.red}
+format-underline = ${colors.white}
+format-padding = 2
+label = %percentage_used%%
 
 [module/battery]
 type = internal/battery
@@ -82,15 +121,23 @@ adapter = AC0
 full-at = 98
 
 label-charging = Charging %percentage%%
+label-discharging = %percentage%%
 
-format-charging = <animation-charging> <label-charging>
-format-charging-underline = #ffb52a
+format-charging-prefix = "Bat: "
+format-discharging-prefix = "Bat: "
+format-full-prefix = "Bat: "
+format-charging-prefix-foreground = ${colors.green}
+format-discharging-prefix-foreground = ${colors.secondary}
+format-full-prefix-foreground = ${colors.green}
 
-format-discharging = <animation-discharging> <label-discharging>
+format-charging = <label-charging>
+format-charging-padding = 2
+format-charging-underline = ${colors.white}
+
+format-discharging = <label-discharging>
+format-discharging-padding = 2
 format-discharging-underline = ${self.format-charging-underline}
 
-format-full-prefix = " "
-format-full-prefix-foreground = ${colors.foreground-alt}
 format-full-underline = ${self.format-charging-underline}
 
 ramp-capacity-0 =
@@ -165,6 +212,8 @@ type = internal/date
 #date-alt =   %A %H:%M 
 date = %{F#928374}%{F-} %H:%M
 interval = 5
+format-prefix = "Time: "
+format-prefix-foreground = ${colors.red}
 format-underline = ${colors.white}
 ;format-background = ${colors.black}
 format-foreground = ${colors.foreground}
@@ -177,17 +226,19 @@ type = internal/volume
 
 format-volume = <label-volume> 
 format-volume-padding = 2
+format-volume-prefix = "Vol: "
+format-volume-prefix-foreground = ${colors.yellow}
 
 format-volume-underline = ${colors.white}
 
-label-volume = %{F#928374} %{F-}%percentage:3%%
-#label-volume-foreground = ${color.white}
+label-volume = 🔊%{F#928374}%{F-}%percentage:3%%
+;label-volume-foreground = ${color.white}
 
 label-muted =%{F#928374} %{F-}mute
 format-muted = <label-muted>
 format-muted-underline = ${colors.white}
 format-muted-padding = 2
-#label-muted-foreground = ${colors.gray}
+;label-muted-foreground = ${colors.gray}
 
 format-padding = 2
 
