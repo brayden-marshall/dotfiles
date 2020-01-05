@@ -34,10 +34,6 @@ if [ `command -v reshift` ]; then
     redshift &
 fi
 
-if [ `command -v wicd-gtk` ]; then
-    wicd-gtk --tray &
-fi
-
 # monitor settings
 #bspc monitor -d I II III IV V VI VII VIII IX X
 if [[ `xrandr -q | grep ' connected' | cut -d ' ' -f1 | grep HDMI2` == '' ]]; then

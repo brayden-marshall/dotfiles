@@ -53,7 +53,7 @@ padding-right = 2
 module-margin-right = 0
 module-margin-left = 0
 
-modules-right = memory separator cpu separator temperature separator volume separator date separator battery separator
+modules-right = memory separator cpu separator temperature separator volume separator battery separator date
 modules-center = mpd 
 modules-left = bspwm
 
@@ -126,9 +126,9 @@ label-discharging = %percentage%%
 format-charging-prefix = "Bat: "
 format-discharging-prefix = "Bat: "
 format-full-prefix = "Bat: "
-format-charging-prefix-foreground = ${colors.green}
-format-discharging-prefix-foreground = ${colors.secondary}
-format-full-prefix-foreground = ${colors.green}
+format-charging-prefix-foreground = ${colors.red}
+format-discharging-prefix-foreground = ${colors.red}
+format-full-prefix-foreground = ${colors.red}
 
 format-charging = <label-charging>
 format-charging-padding = 2
@@ -213,7 +213,7 @@ type = internal/date
 date = %{F#928374}%{F-} %H:%M
 interval = 5
 format-prefix = "Time: "
-format-prefix-foreground = ${colors.red}
+format-prefix-foreground = ${colors.secondary}
 format-underline = ${colors.white}
 ;format-background = ${colors.black}
 format-foreground = ${colors.foreground}
