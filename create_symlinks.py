@@ -26,6 +26,7 @@ dirs_to_link = {
     "dotfiles/bspwm": ".config/bspwm",
     "dotfiles/sxhkd": ".config/sxhkd",
     "dotfiles/rofi": ".config/rofi",
+    "dotfiles/compton": ".config/compton",
 }
 
 for key in files_to_link:

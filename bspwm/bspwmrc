@@ -1,25 +1,24 @@
-#! /bin/bash
+#!/bin/bash
 
 # set keyboard layout mappings
 setxkbmap dvorak
 setxkbmap -option caps:escape
 
 # set touchpad settings if xinput (and libinput) is installed
-# 13 is the ID of the touchpad input device from xinput
+# 13 is the xinput id for the touchpad
 if [ `command -v xinput` ]; then
     xinput --set-prop 13 "libinput Tapping Enabled" 1
     xinput --set-prop 13 "libinput Natural Scrolling Enabled" 1
     xinput --set-prop 13 "libinput Disable While Typing Enabled" 1
 fi
 
-# start sxhkd hotkey daemon
-sxhkd &
-
 # set key repeat rate
 xset r rate 185 40
 
-# set synclient scrolling option
-#synclient HorizEdgeScroll=1 VertEdgeScroll=1 VertScrollDelta=-111
+# start power manager
+if [ `command -v xfce4-power-manager` ]; then
+    xfce4-power-manager
+fi
 
 # start polybar
 $HOME/dotfiles/polybar/polybar.sh
@@ -30,8 +29,14 @@ systemctl --user restart dunst
 # set background image
 ~/.fehbg &
 
-if [ `command -v reshift` ]; then
-    redshift &
+# set screen lock hook
+xss-lock -- i3lock -i $BACKGROUND_IMAGE_FILE &
+
+# start sxhkd hotkey daemon
+sxhkd &
+
+if [ `command -v compton` ]; then
+    compton --config $HOME/.config/compton/compton.conf -b
 fi
 
 # monitor settings

@@ -2,22 +2,25 @@
 
 My personal Linux dotfiles and config files.
 
-## Dependencies for full setup
+## Dependencies
 
-#### Essentials
 - bspwm
 - sxhkd
+- compton/picom (X compositor)
 - alacritty
-- dmenu
 - dunst
 - polybar
 - tmux
-- neovim
 - zsh
+- xss-lock
+- xfce4-power-manager
 
-#### Applications
-- feh (image viewer/wallpaper setter)
-- evince (pdf viewer)
+- Applicatons:
+    - neovim (editor)
+    - rofi (app launcher and more)
+    - feh (image viewer/wallpaper setter)
+    - evince (pdf viewer)
+    - wicd + wicd-gtk (network manager)
 
 ## Setup on fresh install
 
