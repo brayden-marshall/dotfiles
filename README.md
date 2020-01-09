@@ -1,6 +1,6 @@
 # Dotfiles
 
-My personal Linux dotfiles and config files.
+My personal Linux config files.
 
 ## Dependencies
 
@@ -12,7 +12,8 @@ My personal Linux dotfiles and config files.
 - polybar
 - tmux
 - zsh
-- xss-lock
+- xss-lock (hooks to lock on suspend)
+- i3lock (lock screen)
 - xfce4-power-manager
 
 - Applicatons:
@@ -20,7 +21,7 @@ My personal Linux dotfiles and config files.
     - rofi (app launcher and more)
     - feh (image viewer/wallpaper setter)
     - evince (pdf viewer)
-    - wicd + wicd-gtk (network manager)
+    - nm-applet (network manager, part of NetworkManager)
 
 ## Setup on fresh install
 

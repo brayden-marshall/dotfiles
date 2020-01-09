@@ -42,7 +42,7 @@ if [ `command -v exa` ]; then
 fi
 
 if [ -d "$HOME/Camosun/fall_2019/" ]; then
-    alias school="$HOME/Camosun/fall_2019"
+    alias school="$HOME/Camosun/winter_2020"
 fi
 
 if [ `command -v alacritty` ]; then
@@ -60,8 +60,8 @@ if [ `command -v evince` ]; then
     alias pdf="evince"
 fi
 
-if [ `command -v wicd-gtk` ]; then
-    alias network="wicd-gtk"
+if [ `command -v nm-applet` ]; then
+    alias network="nm-applet"
 fi
 
 #=============================

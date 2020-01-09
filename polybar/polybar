@@ -236,6 +236,8 @@ label-volume = 🔊%{F#928374}%{F-}%percentage:3%%
 
 label-muted =%{F#928374} %{F-}mute
 format-muted = <label-muted>
+format-muted-prefix = "Vol: "
+format-muted-prefix-foreground = ${colors.yellow}
 format-muted-underline = ${colors.white}
 format-muted-padding = 2
 ;label-muted-foreground = ${colors.gray}

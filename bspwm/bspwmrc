@@ -6,10 +6,12 @@ setxkbmap -option caps:escape
 
 # set touchpad settings if xinput (and libinput) is installed
 # 13 is the xinput id for the touchpad
-if [ `command -v xinput` ]; then
-    xinput --set-prop 13 "libinput Tapping Enabled" 1
-    xinput --set-prop 13 "libinput Natural Scrolling Enabled" 1
-    xinput --set-prop 13 "libinput Disable While Typing Enabled" 1
+#$HOME/dotfiles/scripts/get_touchpad_id.py > $HOME/xinput_log.txt 2> $HOME/xinput_error.txt
+touchpad_id=`$HOME/dotfiles/scripts/get_touchpad_id.py`
+if [ $? -eq 0 ]; then
+    xinput --set-prop $touchpad_id "libinput Tapping Enabled" 1
+    xinput --set-prop $touchpad_id "libinput Natural Scrolling Enabled" 1
+    xinput --set-prop $touchpad_id "libinput Disable While Typing Enabled" 1
 fi
 
 # set key repeat rate
@@ -35,9 +37,16 @@ xss-lock -- i3lock -i $BACKGROUND_IMAGE_FILE &
 # start sxhkd hotkey daemon
 sxhkd &
 
+# start compton
 if [ `command -v compton` ]; then
     compton --config $HOME/.config/compton/compton.conf -b
 fi
+
+# start NetworkManager applet
+if [ `command -v nm-applet` ]; then
+    nm-applet &
+fi
+
 
 # monitor settings
 #bspc monitor -d I II III IV V VI VII VIII IX X
