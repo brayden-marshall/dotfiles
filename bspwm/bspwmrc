@@ -1,58 +1,12 @@
 #!/bin/bash
 
-# set keyboard layout mappings
-setxkbmap dvorak
-setxkbmap -option caps:escape
-
-# set touchpad settings if xinput (and libinput) is installed
-# 13 is the xinput id for the touchpad
-#$HOME/dotfiles/scripts/get_touchpad_id.py > $HOME/xinput_log.txt 2> $HOME/xinput_error.txt
-touchpad_id=`$HOME/dotfiles/scripts/get_touchpad_id.py`
-if [ $? -eq 0 ]; then
-    xinput --set-prop $touchpad_id "libinput Tapping Enabled" 1
-    xinput --set-prop $touchpad_id "libinput Natural Scrolling Enabled" 1
-    xinput --set-prop $touchpad_id "libinput Disable While Typing Enabled" 1
-fi
-
-# set key repeat rate
-xset r rate 185 40
-
-# start power manager
-if [ `command -v xfce4-power-manager` ]; then
-    xfce4-power-manager
-fi
-
-# start polybar
-$HOME/dotfiles/polybar/polybar.sh
-
-# a hack to get dunst to start correctly
-systemctl --user restart dunst
-
-# set background image
-~/.fehbg &
-
-# set screen lock hook
-xss-lock -- i3lock -i $BACKGROUND_IMAGE_FILE &
-
-# start sxhkd hotkey daemon
-sxhkd &
-
-# start compton
-if [ `command -v compton` ]; then
-    compton --config $HOME/.config/compton/compton.conf -b
-fi
-
-# start NetworkManager applet
-if [ `command -v nm-applet` ]; then
-    nm-applet &
-fi
-
-
 # monitor settings
 #bspc monitor -d I II III IV V VI VII VIII IX X
 if [[ `xrandr -q | grep ' connected' | cut -d ' ' -f1 | grep HDMI2` == '' ]]; then
+    echo "IF" > $HOME/tmp/bspwm_test.txt
     bspc monitor -d I II III IV V VI VII VIII IX X
 else
+    echo "ELSE" > $HOME/tmp/bspwm_test.txt
     bspc monitor HDMI2 -d I II III IV V VI VII VIII IX X
 fi
 
@@ -67,3 +21,48 @@ bspc config gapless_monocle      true
 
 # enable mouse?
 bspc config click_to_focus       button1
+
+# set keyboard layout mappings (must be set before sxhkd starts)
+setxkbmap dvorak
+setxkbmap -option caps:escape
+
+# start sxhkd hotkey daemon
+sxhkd &
+
+# set screen lock hook
+xss-lock -- i3lock -i $BACKGROUND_IMAGE_FILE &
+
+# set background image
+~/.fehbg &
+
+# start polybar
+$HOME/dotfiles/polybar/polybar.sh
+
+# set touchpad settings if xinput (and libinput) is installed
+touchpad_id=`$HOME/dotfiles/scripts/get_touchpad_id.py`
+if [ $? -eq 0 ]; then
+    xinput --set-prop $touchpad_id "libinput Tapping Enabled" 1
+    xinput --set-prop $touchpad_id "libinput Natural Scrolling Enabled" 1
+    xinput --set-prop $touchpad_id "libinput Disable While Typing Enabled" 1
+fi
+
+# set key repeat rate
+xset r rate 185 40
+
+# a hack to get dunst to start correctly
+systemctl --user restart dunst
+
+# start power manager
+if [ `command -v xfce4-power-manager` ]; then
+    xfce4-power-manager
+fi
+
+# start compton
+if [ `command -v compton` ]; then
+    compton --config $HOME/.config/compton/compton.conf -b
+fi
+
+# start NetworkManager applet
+if [ `command -v nm-applet` ]; then
+    nm-applet &
+fi

@@ -38,6 +38,9 @@ nnoremap <leader>F zR zz
 " remap double leader press to switch to last visited buffer
 nnoremap <leader><leader> <C-^>
 
+" map leader + d to open calendar
+nnoremap <leader>d :Calendar<Return>
+
 " *********************************************
 " Tab/Spacing Settings For Different File Types
 " *********************************************
@@ -261,6 +264,7 @@ try
     Plug 'vim-airline/vim-airline-themes'
     Plug 'vimwiki/vimwiki'
     Plug 'Shougo/deoplete.nvim'
+    Plug 'itchyny/calendar.vim'
 
     call plug#end()
 catch
@@ -295,3 +299,7 @@ endif
 " vim-python/python-syntax settings override "
 let g:python_highlight_all=1
 let g:python_highlight_space_errors=0
+
+" calendar.vim configuration
+"let g:calendar_google_calendar=1
+let g:calendar_cache_directory=expand('$HOME/Documents/vim_calendar')

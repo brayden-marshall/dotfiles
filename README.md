@@ -2,6 +2,12 @@
 
 My personal Linux config files.
 
+## Things to add
+
+- Firefox customization:
+    - custom home page
+    - ???
+
 ## Dependencies
 
 - bspwm
@@ -19,9 +25,15 @@ My personal Linux config files.
 - Applicatons:
     - neovim (editor)
     - rofi (app launcher and more)
-    - feh (image viewer/wallpaper setter)
+    - feh (background wallpaper setter)
+    - viewnior (image viewer)
     - evince (pdf viewer)
     - nm-applet (network manager, part of NetworkManager)
+    - pulseaudio, pavucontrol, pasystray (audio management)
+
+- Command Line Utilities:
+    - ripgrep
+    - tldr
 
 ## Setup on fresh install
 

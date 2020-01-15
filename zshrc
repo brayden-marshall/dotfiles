@@ -33,10 +33,6 @@ if [ `command -v nvim` ]; then
     alias vim="nvim"
 fi
 
-if [ `command -v apt-get` ]; then
-    alias esketit="sudo apt-get update && sudo apt-get upgrade"
-fi
-
 if [ `command -v exa` ]; then
     alias ls="exa"
 fi
@@ -52,8 +48,8 @@ fi
 # aliases for common applications so I don't have to remember the
 # specific application names
 
-if [ `command -v feh` ]; then
-    alias image="feh"
+if [ `command -v viewnior` ]; then
+    alias image="viewnior"
 fi
 
 if [ `command -v evince` ]; then
@@ -62,6 +58,10 @@ fi
 
 if [ `command -v nm-applet` ]; then
     alias network="nm-applet"
+fi
+
+if [ `command -v pavucontrol` ]; then
+    alias audio="pavucontrol"
 fi
 
 #=============================
