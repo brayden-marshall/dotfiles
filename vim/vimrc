@@ -264,7 +264,6 @@ try
 
     call plug#end()
 catch
-    echo "Vim-Plug is not installed"
 endtry
 
 " ***************************
