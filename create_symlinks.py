@@ -34,11 +34,14 @@ for key in files_to_link:
     dst = home_dir + files_to_link[key]
     # if file isn't already linked
     if not Path(dst).is_symlink():
-        output = subprocess.check_output(
-            ["ln", "-s", "--backup=numbered", src, dst]
-        )
-        if output != b'':
-            print("Error: " + output)
+        try:
+            output = subprocess.check_output(
+                ["ln", "-s", "--backup=numbered", src, dst]
+            )
+            if output != b'':
+                print("Error: " + output)
+        except:
+            pass
 
 for key in dirs_to_link:
     src = home_dir + key
