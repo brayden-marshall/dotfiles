@@ -213,8 +213,8 @@ label-empty-padding = 2
 
 [module/date]
 type = internal/date
-date = %I:%M %A %b %d,%Y
-date-alt = %I:%M
+date = %I:%M
+date-alt = %I:%M %A %b %d,%Y
 interval = 2
 format-prefix = "Time: "
 format-prefix-foreground = ${colors.secondary}
