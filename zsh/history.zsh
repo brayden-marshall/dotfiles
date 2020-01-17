@@ -1,3 +1,6 @@
+# type + up-arrow to fuzzy search through history
+bindkey '^[[A' up-line-or-search
+
 ## History wrapper
 function omz_history {
   local clear list
