@@ -200,7 +200,7 @@ exec --no-startup-id xset r rate 185 40
 exec --no-startup-id feh --bg-fill $BACKGROUND_IMAGE
 
 # start polybar
-exec_always --no-startup-id $HOME/dotfiles/polybar/polybar.sh
+exec_always --no-startup-id $DOTFILES/polybar/polybar.sh
 
 # colorscheme
 client.focused          #3c3836 #32302f #fabd2f #fabd2f

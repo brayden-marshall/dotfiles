@@ -30,9 +30,10 @@ fi
 export PATH=$PATH:/usr/local/go/bin
 export PATH="$HOME/.cargo/bin:$PATH"
 export XDG_CONFIG_HOME="$HOME/.config"
+export DOTFILES="$HOME/dotfiles"
 
 # set background image
-background_image_file="$HOME/dotfiles/wallpapers/naisu.png"
+background_image_file="$DOTFILES/wallpapers/naisu.png"
 if [ -f $background_image_file ]; then
     #feh --bg-fill $background_image_file
     export BACKGROUND_IMAGE_FILE=$background_image_file

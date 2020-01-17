@@ -8,6 +8,5 @@ while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 # Launch polybar
 for m in $(polybar --list-monitors | cut -d":" -f1); do
-    MONITOR=$m polybar --config-file="$HOME/dotfiles/polybar/polybar" --reload bar &
+    MONITOR=$m polybar --config-file="$DOTFILES/polybar/polybar" --reload bar &
 done
-#polybar --config-file="$HOME/dotfiles/polybar/polybar" bar &
