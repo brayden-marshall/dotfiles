@@ -35,7 +35,6 @@ secondary = #FF6200
 alert = #fb4934
 
 [bar/bar]
-#monitor = eDP1
 bottom = true
 wm-restack = bspwm
 width = 1920
@@ -53,7 +52,7 @@ padding-right = 2
 module-margin-right = 0
 module-margin-left = 0
 
-modules-right = memory sep cpu sep temperature sep volume sep battery sep date
+modules-right = memory sep cpu sep temperature sep volume sep battery sep date sep keyboard
 modules-center =
 modules-left = bspwm
 
@@ -69,11 +68,18 @@ tray-position = right
 ;tray-offset-y = 0
 ;tray-maxsize = 16
 tray-padding = 0
-tray-transparent = true
 tray-scale = 1.0
 
 font-0 = "monospace:size=10;2"
 font-1 = "FontAwesome:size=10;2"
+
+[module/keyboard]
+type=custom/script
+
+exec = $DOTFILES/scripts/get_keyboard_layout.sh
+interval=1
+
+format-padding = 2
 
 [module/temperature]
 type = internal/temperature
@@ -182,17 +188,18 @@ label-song-padding = 1
 
 [module/bspwm]
 type = internal/bspwm
+pin-workspaces = true
 
-ws-icon-0 = I;1
-ws-icon-1 = II;2
-ws-icon-2 = III;3
-ws-icon-3 = IV;4
-ws-icon-4 = V;5
-ws-icon-5 = VI;6
-ws-icon-6 = VII;7
-ws-icon-7 = VIII;8
-ws-icon-8 = IX;9
-ws-icon-9 = X;10
+ws-icon-0 = 1;1
+ws-icon-1 = 2;2
+ws-icon-2 = 3;3
+ws-icon-3 = 4;4
+ws-icon-4 = 5;5
+ws-icon-5 = 6;6
+ws-icon-6 = 7;7
+ws-icon-7 = 8;8
+ws-icon-8 = 9;9
+ws-icon-9 = 10;10
 ws-icon-default = x
 
 label-focused = %icon%

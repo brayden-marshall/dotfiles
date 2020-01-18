@@ -3,9 +3,13 @@
 # monitor settings
 #bspc monitor -d I II III IV V VI VII VIII IX X
 if [[ `xrandr -q | grep ' connected' | cut -d ' ' -f1 | grep HDMI2` == '' ]]; then
-    bspc monitor -d I II III IV V VI VII VIII IX X
+    bspc monitor -d 1 2 3 4 5
 else
-    bspc monitor HDMI2 -d I II III IV V VI VII VIII IX X
+    xrandr --output HDMI2 --primary --mode 1920x1080 --rotate normal
+    xrandr --output eDP1 --off
+        #--output eDP1 --mode 1920x1080 --rotate normal --left-of HDMI2
+    bspc monitor HDMI2 -d 1 2 3 4 5
+    #bspc monitor eDP1 -d 6 7 8 9 10
 fi
 
 # window settings
@@ -17,8 +21,14 @@ bspc config split_ratio          0.50
 bspc config borderless_monocle   true
 bspc config gapless_monocle      false
 
+# move pointer to focused monitor
+bspc config pointer_follows_monitor true
+
 # enable mouse?
 bspc config click_to_focus       button1
+
+# ensure that initial focus is on desktop 1
+bspc desktop -f 1
 
 # set keyboard layout mappings (must be set before sxhkd starts)
 setxkbmap dvorak
@@ -28,7 +38,7 @@ setxkbmap -option caps:escape
 sxhkd &
 
 # set screen lock hook
-xss-lock -- i3lock -i $BACKGROUND_IMAGE_FILE &
+xss-lock -- i3lock -t -i $BACKGROUND_IMAGE_FILE &
 
 # set background image
 ~/.fehbg &
