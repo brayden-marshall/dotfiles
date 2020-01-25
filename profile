@@ -27,8 +27,8 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 # environment variables
-export PATH=$PATH:/usr/local/go/bin
-export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$PATH:/usr/local/go/bin"
+export PATH="$PATH:$HOME/.cargo/bin:$HOME/dotnet/tools"
 export XDG_CONFIG_HOME="$HOME/.config"
 export DOTFILES="$HOME/dotfiles"
 

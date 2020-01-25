@@ -1,41 +1,21 @@
 #!/bin/bash
 
-# monitor settings
-#bspc monitor -d I II III IV V VI VII VIII IX X
-if [[ `xrandr -q | grep ' connected' | cut -d ' ' -f1 | grep HDMI2` == '' ]]; then
-    bspc monitor -d 1 2 3 4 5
-else
-    xrandr --output HDMI2 --primary --mode 1920x1080 --rotate normal
-    xrandr --output eDP1 --off
-        #--output eDP1 --mode 1920x1080 --rotate normal --left-of HDMI2
-    bspc monitor HDMI2 -d 1 2 3 4 5
-    #bspc monitor eDP1 -d 6 7 8 9 10
-fi
+# runs all bspwm config options, including monitor/desktop detection and setup; setting
+# keyboard layout; touchpad settings etc.
+$DOTFILES/bspwm/bspwm_config.sh
 
-# window settings
-bspc config border_width        1
-bspc config window_gap          0
-
-# split behaviour
-bspc config split_ratio          0.50
-bspc config borderless_monocle   true
-bspc config gapless_monocle      false
-
-# move pointer to focused monitor
-bspc config pointer_follows_monitor true
-
-# enable mouse?
-bspc config click_to_focus       button1
-
-# ensure that initial focus is on desktop 1
+# ensure that initial focus is on desktop 1 (just a quality of life thing)
 bspc desktop -f 1
 
-# set keyboard layout mappings (must be set before sxhkd starts)
-setxkbmap dvorak
-setxkbmap -option caps:escape
+# *****************************
+# Startup Applications
+# *****************************
 
 # start sxhkd hotkey daemon
 sxhkd &
+
+# FIXME: a hack to get dunst.service to start correctly
+systemctl --user restart dunst
 
 # set screen lock hook
 xss-lock -- i3lock -t -i $BACKGROUND_IMAGE_FILE &
@@ -44,25 +24,9 @@ xss-lock -- i3lock -t -i $BACKGROUND_IMAGE_FILE &
 ~/.fehbg &
 
 # start polybar
-$DOTFILES/polybar/polybar.sh
-
-# set touchpad settings if xinput (and libinput) is installed
-touchpad_id=`$DOTFILES/scripts/get_touchpad_id.py`
-if [ $? -eq 0 ]; then
-    xinput --set-prop $touchpad_id "libinput Tapping Enabled" 1
-    xinput --set-prop $touchpad_id "libinput Natural Scrolling Enabled" 1
-    xinput --set-prop $touchpad_id "libinput Disable While Typing Enabled" 1
+if [ `command -v polybar` ]; then
+    $DOTFILES/polybar/polybar.sh
 fi
-
-# set key repeat rate
-xset r rate 185 40
-
-# a hack to get dunst to start correctly
-systemctl --user restart dunst
-
-# *****************************
-# Startup Applications
-# *****************************
 
 # start power manager
 if [ `command -v xfce4-power-manager` ]; then
@@ -81,4 +45,8 @@ fi
 
 if [ `command -v pasystray` ]; then
     pasystray &
+fi
+
+if [ `command -v redshift` ]; then
+    redshift &
 fi

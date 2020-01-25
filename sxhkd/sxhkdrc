@@ -10,10 +10,16 @@ super + Return
 super + d
         rofi -show drun -show-icons
 
-# make sxhkd reload its configuration files:
+# make sxhkd reload its configuration files
 super + R
 	pkill -USR1 -x sxhkd
 
+# re-run bspwm config, useful for setting up desktops when adding or removing
+# monitors
+super + r
+    $DOTFILES/bspwm/bspwm_config.sh
+
+# if on Dvorak switch to Qwerty and vice versa
 super + space
         bash $DOTFILES/scripts/toggle_keyboard_layout.sh
 

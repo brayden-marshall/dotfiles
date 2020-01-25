@@ -17,6 +17,9 @@ files_to_link = {
     "dotfiles/xinitrc": ".xinitrc",
     "dotfiles/vim/init.vim": ".config/nvim/init.vim",
     "dotfiles/fehbg": ".fehbg",
+    "dotfiles/mpd.conf": ".config/mpd/mpd.conf",
+    "dotfiles/pulse/client.conf": ".config/pulse/client.conf",
+    "dotfiles/pulse/daemon.conf": ".config/pulse/daemon.conf",
 }
 
 dirs_to_link = {
@@ -27,6 +30,7 @@ dirs_to_link = {
     "dotfiles/sxhkd": ".config/sxhkd",
     "dotfiles/rofi": ".config/rofi",
     "dotfiles/compton": ".config/compton",
+    "dotfiles/ncmpcpp": ".ncmpcpp",
 }
 
 for key in files_to_link:
