@@ -16,6 +16,7 @@ files_to_link = {
     "dotfiles/dunstrc": ".config/dunst/dunstrc",
     "dotfiles/xinitrc": ".xinitrc",
     "dotfiles/vim/init.vim": ".config/nvim/init.vim",
+    "dotfiles/vim/coc-settings.json": ".config/nvim/coc-settings.json",
     "dotfiles/fehbg": ".fehbg",
     "dotfiles/mpd.conf": ".config/mpd/mpd.conf",
     "dotfiles/pulse/client.conf": ".config/pulse/client.conf",

@@ -7,6 +7,8 @@ if !exists("g:syntax_on")
     syntax enable
 endif
 
+let g:pyxversion=3
+
 " colorscheme settings
 colorscheme gruvbox
 let g:molokai_original=1
@@ -313,7 +315,7 @@ try
 
     " C#
     Plug 'OrangeT/vim-csharp'
-    Plug 'Omnisharp/omnisharp-vim'
+    "Plug 'Omnisharp/omnisharp-vim'
 
     " Python
     Plug 'vim-python/python-syntax'
@@ -323,6 +325,9 @@ try
 
     " Rust
     Plug 'rust-lang/rust.vim'
+
+    " Swift
+    Plug 'keith/swift.vim'
 
     " Autocompletion
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -401,6 +406,15 @@ command! -bang -nargs=* Rg
   \   fzf#vim#with_preview(), <bang>0)
 
 " coc.nvim settings
+let g:coc_global_extensions=[
+    \ 'coc-json',
+    \ 'coc-tsserver',
+    \ 'coc-html',
+    \ 'coc-css',
+    \ 'coc-rls',
+    \ 'coc-omnisharp'
+    \ ]
+
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
 inoremap <silent><expr> <TAB>
