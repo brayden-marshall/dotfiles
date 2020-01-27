@@ -1,3 +1,7 @@
+" =================================================================
+" Editor Settings
+" =================================================================
+
 " enable syntax processing
 if !exists("g:syntax_on")
     syntax enable
@@ -16,6 +20,16 @@ endif
 " map leader key to space bar
 let mapleader=" "
 
+" if ripgrep is installed, use it for grep commands within vim
+if executable('rg')
+    set grepprg=rg\ --no-heading\ --vimgrep
+    set grepformat=%f:%l:%c:%m
+endif
+
+" =====================================================
+" Mappings
+" =====================================================
+
 " remap window split keybinds
 " uses CTRL+<h,j,k,l> to navigate windows
 nnoremap <C-J> <C-W><C-J>
@@ -24,19 +38,42 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 " remap code-folding keybinds
-" leader+<C,O> closes, opens folds recursively up to the top level
-" leader+<c,o> closes, opens the current fold
-" leader+<f,F> closes, opens all folds in the buffer
-nnoremap <leader>c zc
-nnoremap <leader>C zC
-nnoremap <leader>o zo
-nnoremap <leader>O zO
-nnoremap <leader>f zM
+" leader+f+<C,O> closes, opens folds recursively up to the top level
+" leader+f+<c,o> closes, opens the current fold
+" leader+f+<f,F> closes, opens all folds in the buffer
+nnoremap <leader>fc zc
+nnoremap <leader>fC zC
+nnoremap <leader>fo zo
+nnoremap <leader>fO zO
+nnoremap <leader>ff zM
 " zz to center the screen on your cursor after opening folds
-nnoremap <leader>F zR zz
+nnoremap <leader>fF zR zz
 
 " remap double leader press to switch to last visited buffer
 nnoremap <leader><leader> <C-^>
+
+" mappings to fuzzy search by file or buffer
+" <leader>sf for search files
+" <leader>sb for search buffers
+" <leader>ss search with ripgrep
+nnoremap <leader>sf :Files<CR>
+nnoremap <leader>sb :Buffers<CR>
+nnoremap <leader>ss :Rg<CR>
+"map <C-p> :Files<CR>
+"nmap <leader>; :Buffers<CR>
+
+" center search results
+nnoremap <silent> n nzz
+nnoremap <silent> N Nzz
+nnoremap <silent> * *zz
+nnoremap <silent> # #zz
+nnoremap <silent> g* g*zz
+
+" very magic search by default (uses special characters as special search characters
+" and requires literals to be escaped
+nnoremap ? ?\v
+nnoremap / /\v
+cnoremap %s/ %sm/
 
 " *********************************************
 " Tab/Spacing Settings For Different File Types
@@ -59,13 +96,14 @@ set smartindent
 " use 'shiftwidth' to insert and delete blanks
 set smarttab
 
+" insert tabs when using .conf files (it's important)
 au BufNewFile,BufRead *.conf
     \ set autoindent |
     \ set noexpandtab |
     \ set tabstop=4 |
     \ set shiftwidth=4
 
-au BufNewFile,BufRead *.html
+au BufNewFile,BufRead *.html,*.htm
     \ set shiftwidth=2 |
     \ set tabstop=2 |
     \ set softtabstop=2 |
@@ -98,7 +136,7 @@ let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 
 " YAML file format settings
-au BufNewFile,BufRead *.yml
+au BufNewFile,BufRead *.yml,*.yaml
     \ set tabstop=2 |
     \ set softtabstop=2 |
     \ set shiftwidth=2 |
@@ -119,6 +157,12 @@ au BufNewFile,BufRead *.prose
     \ set norelativenumber |
     \ setlocal columns=100
 
+" Jump to last edit position on opening file
+if has("autocmd")
+  " https://stackoverflow.com/questions/31449496/vim-ignore-specifc-file-in-autocommand
+  au BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
+
 " ****************************
 " Misc. Editor Settings
 " ****************************
@@ -135,6 +179,15 @@ set showcmd
 " Use case insensitive search, except when using capital letters
 set ignorecase
 set smartcase
+
+" show current matches while typing in search
+set incsearch
+
+" don't highlight text when searching
+set nohlsearch
+
+" when search and replacing, replace all matches on the line by default
+set gdefault
 
 " Allow backspacing over autoindent, line breaks and start of insert action
 set backspace=indent,eol,start
@@ -179,9 +232,6 @@ set splitbelow
 
 " set clipboard to use system clipboard
 set clipboard+=unnamedplus
-
-" don't highlight text when searching
-set nohlsearch
 
 " probably useless, but keep just in case
 set nocompatible
@@ -228,6 +278,25 @@ set shiftround
 " not normally be able to go, such as off the end of a line.
 set virtualedit=block,onemore
 
+" write to swap file every after 300 ms of inactivity
+set updatetime=300
+
+" disable file backup. some autocomplete servers have issues with backup files
+set nobackup
+set nowritebackup
+
+" don't give |ins-completion-menu| messages (prevents unneccesary feedback)
+set shortmess+=c
+
+" always show signcolumn. prevents buffer from moving when showing/hiding it
+set signcolumn=yes
+
+" always keep at least 2 lines above and below the cursor
+set scrolloff=2
+
+" don't insert a space when joining lines
+set nojoinspaces
+
 " ***************************
 " Vim-Plug Section
 " ***************************
@@ -255,22 +324,29 @@ try
     " Rust
     Plug 'rust-lang/rust.vim'
 
+    " Autocompletion
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+    " Fuzzy searching
+    Plug 'airblade/vim-rooter'
+    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+    Plug 'junegunn/fzf.vim'
+
     "Misc.
-    Plug 'scrooloose/nerdtree'
+    "Plug 'scrooloose/nerdtree'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'vimwiki/vimwiki'
-    Plug 'Shougo/deoplete.nvim'
+    "Plug 'Shougo/deoplete.nvim'
 
     call plug#end()
 catch
+    echo v:exception
 endtry
 
 " ***************************
 " Plugin specific settings
 " ***************************
-
-let NERDTreeMinimalUI = 1
 
 " vimwiki stuff
 let g:vimwiki_list = [
@@ -294,3 +370,77 @@ endif
 " vim-python/python-syntax settings override "
 let g:python_highlight_all=1
 let g:python_highlight_space_errors=0
+
+" vim-rooter settings
+let g:rooter_change_directory_for_non_project_files = 'current'
+let g:rooter_silent_chdir = 1
+
+" fzf settings
+" set layout to bottom of screen and roughly 20% of it's height
+let g:fzf_layout = { 'down': '~20%' }
+
+" match fzf colors to current color scheme
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview(), <bang>0)
+
+" coc.nvim settings
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+" Remap for format selected region
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
