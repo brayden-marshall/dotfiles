@@ -19,7 +19,7 @@ My personal Linux config files.
 - tmux
 - zsh
 - xss-lock (hooks to lock on suspend)
-- i3lock (lock screen)
+- i3lock-color (lock screen)
 - xfce4-power-manager
 
 - Applicatons:

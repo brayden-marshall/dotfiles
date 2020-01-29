@@ -7,11 +7,11 @@ if !exists("g:syntax_on")
     syntax enable
 endif
 
+" use python 3 by default
 let g:pyxversion=3
 
 " colorscheme settings
 colorscheme gruvbox
-let g:molokai_original=1
 set background=dark
 
 " if terminal supports 'termguicolors', turn it on
@@ -342,7 +342,7 @@ try
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'vimwiki/vimwiki'
-    "Plug 'Shougo/deoplete.nvim'
+    Plug 'christoomey/vim-tmux-navigator'
 
     call plug#end()
 catch
@@ -458,3 +458,6 @@ nmap <leader>rn <Plug>(coc-rename)
 " Remap for format selected region
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
+
+" Turn off coc.nvim for certain file types
+au BufRead,BufNewFile *.wiki,*.txt CocDisable

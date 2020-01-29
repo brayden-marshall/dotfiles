@@ -18,7 +18,7 @@ sxhkd &
 systemctl --user restart dunst
 
 # set screen lock hook
-xss-lock -- i3lock -t -i $BACKGROUND_IMAGE_FILE &
+xss-lock -- $DOTFILES/scripts/screen_lock.sh &
 
 # set background image
 ~/.fehbg &
@@ -47,6 +47,6 @@ if [ `command -v pasystray` ]; then
     pasystray &
 fi
 
-if [ `command -v redshift` ]; then
-    redshift &
-fi
+#if [ `command -v redshift` ]; then
+#    redshift &
+#fi

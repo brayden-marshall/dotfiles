@@ -29,10 +29,6 @@ if [ -d "$HOME/Camosun/fall_2019/" ]; then
     alias school="$HOME/Camosun/winter_2020"
 fi
 
-if [ `command -v alacritty` ]; then
-    alias alacritty="WIN_HIDPI_FACTOR=1.0 alacritty"
-fi
-
 # aliases for common applications so I don't have to remember the
 # specific application names
 
@@ -53,7 +49,7 @@ if [ `command -v pavucontrol` ]; then
 fi
 
 if [ `command -v i3lock` ]; then
-    alias lock="i3lock -t -i $BACKGROUND_IMAGE_FILE &"
+    alias lock=$DOTFILES/scripts/screen_lock.sh
 fi
 
 alias weather="curl wttr.in"
