@@ -13,7 +13,6 @@ files_to_link = {
     "dotfiles/zsh/zshrc": ".zshrc",
     "dotfiles/tmux.conf": ".tmux.conf",
     "dotfiles/alacritty.yml": ".alacritty.yml",
-    "dotfiles/dunstrc": ".config/dunst/dunstrc",
     "dotfiles/xinitrc": ".xinitrc",
     "dotfiles/vim/init.vim": ".config/nvim/init.vim",
     "dotfiles/vim/coc-settings.json": ".config/nvim/coc-settings.json",
@@ -32,6 +31,7 @@ dirs_to_link = {
     "dotfiles/rofi": ".config/rofi",
     "dotfiles/compton": ".config/compton",
     "dotfiles/ncmpcpp": ".ncmpcpp",
+    "dotfiles/dunst": ".config/dunst"
 }
 
 for key in files_to_link:
