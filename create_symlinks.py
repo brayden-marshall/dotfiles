@@ -10,6 +10,7 @@ home_dir = os.getenv('HOME') + "/"
 files_to_link = {
     "dotfiles/vim/vimrc": ".vimrc",
     "dotfiles/profile": ".profile",
+    "dotfiles/profile": ".zprofile",
     "dotfiles/zsh/zshrc": ".zshrc",
     "dotfiles/tmux.conf": ".tmux.conf",
     "dotfiles/alacritty.yml": ".alacritty.yml",
@@ -17,7 +18,6 @@ files_to_link = {
     "dotfiles/vim/init.vim": ".config/nvim/init.vim",
     "dotfiles/vim/coc-settings.json": ".config/nvim/coc-settings.json",
     "dotfiles/fehbg": ".fehbg",
-    "dotfiles/mpd.conf": ".config/mpd/mpd.conf",
     "dotfiles/pulse/client.conf": ".config/pulse/client.conf",
     "dotfiles/pulse/daemon.conf": ".config/pulse/daemon.conf",
 }
@@ -30,7 +30,6 @@ dirs_to_link = {
     "dotfiles/sxhkd": ".config/sxhkd",
     "dotfiles/rofi": ".config/rofi",
     "dotfiles/compton": ".config/compton",
-    "dotfiles/ncmpcpp": ".ncmpcpp",
     "dotfiles/dunst": ".config/dunst"
 }
 
