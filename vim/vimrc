@@ -303,48 +303,50 @@ set nojoinspaces
 " Vim-Plug Section
 " ***************************
 try
-    call plug#begin(expand('~/.vim/plugged'))
+    if isdirectory(expand('~/.vim/plugged'))
+        call plug#begin(expand('~/.vim/plugged'))
 
-    " Javascript/Typescript
-    Plug 'leafgarland/typescript-vim'
-    Plug 'HerringtonDarkholme/yats.vim'
-    Plug 'MaxMEllon/vim-jsx-pretty'
+        " Javascript/Typescript
+        Plug 'leafgarland/typescript-vim'
+        Plug 'HerringtonDarkholme/yats.vim'
+        Plug 'MaxMEllon/vim-jsx-pretty'
 
-    " F#
-    Plug 'kongo2002/fsharp-vim'
+        " F#
+        Plug 'kongo2002/fsharp-vim'
 
-    " C#
-    Plug 'OrangeT/vim-csharp'
-    "Plug 'Omnisharp/omnisharp-vim'
+        " C#
+        Plug 'OrangeT/vim-csharp'
+        "Plug 'Omnisharp/omnisharp-vim'
 
-    " Python
-    Plug 'vim-python/python-syntax'
+        " Python
+        Plug 'vim-python/python-syntax'
 
-    " C++
-    Plug 'octol/vim-cpp-enhanced-highlight'
+        " C++
+        Plug 'octol/vim-cpp-enhanced-highlight'
 
-    " Rust
-    Plug 'rust-lang/rust.vim'
+        " Rust
+        Plug 'rust-lang/rust.vim'
 
-    " Swift
-    Plug 'keith/swift.vim'
+        " Swift
+        Plug 'keith/swift.vim'
 
-    " Autocompletion
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+        " Autocompletion
+        Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-    " Fuzzy searching
-    Plug 'airblade/vim-rooter'
-    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-    Plug 'junegunn/fzf.vim'
+        " Fuzzy searching
+        Plug 'airblade/vim-rooter'
+        Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+        Plug 'junegunn/fzf.vim'
 
-    "Misc.
-    "Plug 'scrooloose/nerdtree'
-    Plug 'vim-airline/vim-airline'
-    Plug 'vim-airline/vim-airline-themes'
-    Plug 'vimwiki/vimwiki'
-    Plug 'christoomey/vim-tmux-navigator'
+        "Misc.
+        "Plug 'scrooloose/nerdtree'
+        Plug 'vim-airline/vim-airline'
+        Plug 'vim-airline/vim-airline-themes'
+        Plug 'vimwiki/vimwiki'
+        Plug 'christoomey/vim-tmux-navigator'
 
-    call plug#end()
+        call plug#end()
+    endif
 catch
     echo v:exception
 endtry
