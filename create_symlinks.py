@@ -10,7 +10,7 @@ home_dir = os.getenv('HOME') + "/"
 files_to_link = {
     "dotfiles/vim/vimrc": ".vimrc",
     "dotfiles/profile": ".profile",
-    "dotfiles/profile": ".zprofile",
+    "dotfiles/zprofile": ".zprofile",
     "dotfiles/zsh/zshrc": ".zshrc",
     "dotfiles/tmux.conf": ".tmux.conf",
     "dotfiles/alacritty.yml": ".alacritty.yml",
