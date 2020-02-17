@@ -306,32 +306,29 @@ try
     if isdirectory(expand('~/.vim/plugged'))
         call plug#begin(expand('~/.vim/plugged'))
 
+        if has('nvim')
+            " Autocompletion and syntax highlighting
+            Plug 'neoclide/coc.nvim', {'branch': 'release'}
+        else
+            " syntax highlighting plugins to use if using regular ole vim:
+            Plug 'OrangeT/vim-csharp'
+            Plug 'vim-python/python-syntax'
+            Plug 'leafgarland/typescript-vim'
+            Plug 'rust-lang/rust.vim'
+        endif
+
         " Javascript/Typescript
-        Plug 'leafgarland/typescript-vim'
         Plug 'HerringtonDarkholme/yats.vim'
         Plug 'MaxMEllon/vim-jsx-pretty'
 
         " F#
         Plug 'kongo2002/fsharp-vim'
 
-        " C#
-        Plug 'OrangeT/vim-csharp'
-        "Plug 'Omnisharp/omnisharp-vim'
-
-        " Python
-        Plug 'vim-python/python-syntax'
-
         " C++
         Plug 'octol/vim-cpp-enhanced-highlight'
 
-        " Rust
-        Plug 'rust-lang/rust.vim'
-
         " Swift
         Plug 'keith/swift.vim'
-
-        " Autocompletion
-        Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
         " Fuzzy searching
         Plug 'airblade/vim-rooter'

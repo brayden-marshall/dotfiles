@@ -10,7 +10,14 @@ magenta='#b16286FF'
 cyan='#689d6aFF'
 white='#a89984FF'
 
-wrong_password_messages=("Fetid!" "Foul!" "Cretin!" "Blasphemy!" "Heathen!")
+wrong_password_messages=(
+    "Fetid!"
+    "Foul!"
+    "Cretin!"
+    "Blasphemy!"
+    "Heathen!"
+    "Balderdash!"
+)
 
 size=${#wrong_password_messages[@]}
 index=$(($RANDOM % $size))
