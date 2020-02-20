@@ -3,7 +3,8 @@
 # monitor settings
 #bspc monitor -d I II III IV V VI VII VIII IX X
 if [[ `xrandr -q | grep ' connected' | cut -d ' ' -f1 | grep HDMI2` == '' ]]; then
-    bspc monitor -d 1 2 3 4 5
+    xrandr --output eDP1 --primary --mode 1920x1080 --rotate normal
+    bspc monitor eDP1 -d 1 2 3 4 5
 else
     xrandr --output HDMI2 --primary --mode 1920x1080 --rotate normal
     xrandr --output eDP1 --off
