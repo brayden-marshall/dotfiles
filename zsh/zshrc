@@ -81,6 +81,6 @@ chpwd() {
 #=============================
 
 # set keyboard repeat rate and frequency
-if [ `command -v xset` ]; then
-    xset r rate 200 50
-fi
+#if [ `command -v xset` ]; then
+#    xset r rate 200 50
+#fi
