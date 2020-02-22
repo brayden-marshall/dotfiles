@@ -46,7 +46,3 @@ fi
 if [ `command -v pasystray` ]; then
     pasystray &
 fi
-
-#if [ `command -v redshift` ]; then
-#    redshift &
-#fi
