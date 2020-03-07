@@ -2,6 +2,10 @@
 
 My personal Linux config files.
 
+## Issues:
+
+- when connecting a laptop to an external display, then unplugging from that display to return to using the laptop's display, reloading bspwm_config.sh does not work
+
 ## Things to add
 
 - Firefox customization:

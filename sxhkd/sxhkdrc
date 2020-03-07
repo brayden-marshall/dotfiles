@@ -23,6 +23,10 @@ super + r
 super + space
         bash $DOTFILES/scripts/toggle_keyboard_layout.sh
 
+# toggle rice mode
+super + alt + r
+              $DOTFILES/scripts/toggle_rice_mode.sh
+
 #
 # bspwm hotkeys
 #

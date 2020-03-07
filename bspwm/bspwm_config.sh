@@ -13,9 +13,7 @@ else
     #bspc monitor eDP1 -d 6 7 8 9 10
 fi
 
-# window settings
-bspc config border_width        1
-bspc config window_gap          0
+$DOTFILES/bspwm/normal_mode_config.sh
 
 # split behaviour
 bspc config split_ratio          0.50
@@ -27,6 +25,8 @@ bspc config pointer_follows_monitor true
 
 # enable mouse?
 bspc config click_to_focus       button1
+
+bspc config remove_unplugged_monitors   true
 
 # set keyboard layout mappings (must be set before sxhkd starts)
 setxkbmap dvorak

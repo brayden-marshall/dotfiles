@@ -33,6 +33,19 @@ export PATH="$PATH:$HOME/.cargo/bin:$HOME/dotnet/tools"
 export XDG_CONFIG_HOME="$HOME/.config"
 export DOTFILES="$HOME/dotfiles"
 
+export BSPWM_RICE_MODE_TMP_FILE="/tmp/bspwm_rice_mode"
+
+# gruvbox color variables for various use in scripts
+export THEME_BLACK="#282828"
+export THEME_WHITE="#EBDBB2"
+export THEME_RED="#cc241d"
+export THEME_GREEN="#98971a"
+export THEME_YELLOW="#d79921"
+export THEME_BLUE="#458588"
+export THEME_MAGENTA="#b16286"
+export THEME_CYAN="#689d6a"
+export THEME_WHITE="#a89984"
+
 # set background image
 background_image_file="$DOTFILES/wallpapers/naisu.png"
 if [ -f $background_image_file ]; then

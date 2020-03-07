@@ -4,6 +4,9 @@
 # keyboard layout; touchpad settings etc.
 $DOTFILES/bspwm/bspwm_config.sh
 
+# set rice mode to off in BSPWM_RICE_MODE_TMP_FILE
+echo 0 > $BSPWM_RICE_MODE_TMP_FILE
+
 # ensure that initial focus is on desktop 1 (just a quality of life thing)
 bspc desktop -f 1
 
