@@ -63,9 +63,8 @@
 
 window {
     background-color: @background;
-    border:           1;
-    padding:          2;
-    border-color:     @separatorcolor;
+    border:           2;
+    padding:          16;
 }
 
 mainbox {
