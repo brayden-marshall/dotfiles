@@ -437,17 +437,17 @@ inoremap <silent><expr> <c-space> coc#refresh()
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " Remap keys for gotos
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gt <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+nmap <leader>gd <Plug>(coc-definition)
+nmap <leader>gt <Plug>(coc-type-definition)
+nmap <leader>gi <Plug>(coc-implementation)
+nmap <leader>gr <Plug>(coc-references)
+
+" (sd for show documentation)
+nnoremap <leader>sD :call <SID>show_documentation()<CR>
 
 " Navigate diagnosticts errors (ge for goto error)
-nmap <silent> ge <Plug>(coc-diagnostic-next)
-nmap <silent> gE <Plug>(coc-diagnostic-prev)
-
-" Use K to show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+nmap <leader>ge <Plug>(coc-diagnostic-next)
+nmap <leader>gE <Plug>(coc-diagnostic-prev)
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
