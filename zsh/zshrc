@@ -33,23 +33,23 @@ fi
 # specific application names
 
 if [ `command -v viewnior` ]; then
-    alias image='viewnior'
+    alias -g image='viewnior'
 fi
 
 if [ `command -v evince` ]; then
-    alias pdf="evince"
+    alias -g pdf="evince"
 fi
 
 if [ `command -v nm-applet` ]; then
-    alias network="nm-applet"
+    alias -g network="nm-applet"
 fi
 
 if [ `command -v pavucontrol` ]; then
-    alias audio="pavucontrol"
+    alias -g audio="pavucontrol"
 fi
 
 if [ `command -v i3lock` ]; then
-    alias lock=$DOTFILES/scripts/screen_lock.sh
+    alias -g lock=$DOTFILES/scripts/screen_lock.sh
 fi
 
 alias weather="curl wttr.in"
@@ -74,6 +74,15 @@ unsetopt share_history
 
 chpwd() {
     ls
+}
+
+# command to open any command in terminal, ending with the terminal closed
+scratch() {
+    if (( $# == 0 )) then
+        echo "scratch requires at least one argument"
+    else
+        xdg-open $@ & disown
+    fi
 }
 
 #=============================

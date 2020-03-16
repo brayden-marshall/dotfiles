@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# make sure layout is set dvorak before screen is locked so that I don't have to hunt and peck my password
+setxkbmap dvorak
+
 # gruvbox theme color variables
 black='#282828FF'
 red='#cc241dFF'

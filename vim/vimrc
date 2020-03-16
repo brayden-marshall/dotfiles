@@ -411,7 +411,8 @@ let g:coc_global_extensions=[
     \ 'coc-html',
     \ 'coc-css',
     \ 'coc-rls',
-    \ 'coc-omnisharp'
+    \ 'coc-omnisharp',
+    \ 'coc-clangd'
     \ ]
 
 " Use tab for trigger completion with characters ahead and navigate.
