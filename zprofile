@@ -1,3 +1,3 @@
 #!/bin/zsh
 
-source $DOTFILES/profile
+source $HOME/.profile

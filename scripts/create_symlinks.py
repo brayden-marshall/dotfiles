@@ -30,7 +30,8 @@ dirs_to_link = {
     "dotfiles/sxhkd": ".config/sxhkd",
     "dotfiles/rofi": ".config/rofi",
     "dotfiles/compton": ".config/compton",
-    "dotfiles/dunst": ".config/dunst"
+    "dotfiles/dunst": ".config/dunst",
+    "dotfiles/fontconfig": ".config/fontconfig",
 }
 
 for key in files_to_link:
