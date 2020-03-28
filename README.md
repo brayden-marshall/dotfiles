@@ -34,6 +34,7 @@ My personal Linux config files.
     - evince (pdf viewer)
     - nm-applet (network manager, part of NetworkManager)
     - pulseaudio, pavucontrol, pasystray (audio management)
+    - Hack (monospace font)
 
 - Command Line Utilities:
     - ripgrep

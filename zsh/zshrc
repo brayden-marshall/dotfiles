@@ -81,7 +81,7 @@ scratch() {
     if (( $# == 0 )) then
         echo "scratch requires at least one argument"
     else
-        xdg-open $@ & disown
+        xdg-open $@ & disown && exit
     fi
 }
 
@@ -93,3 +93,5 @@ scratch() {
 #if [ `command -v xset` ]; then
 #    xset r rate 200 50
 #fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

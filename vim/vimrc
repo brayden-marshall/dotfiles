@@ -336,7 +336,7 @@ try
         Plug 'junegunn/fzf.vim'
 
         "Misc.
-        "Plug 'scrooloose/nerdtree'
+        Plug 'scrooloose/nerdtree'
         Plug 'vim-airline/vim-airline'
         Plug 'vim-airline/vim-airline-themes'
         Plug 'vimwiki/vimwiki'
@@ -347,6 +347,8 @@ try
 catch
     echo v:exception
 endtry
+
+map <leader>nt :NERDTreeToggle<CR>
 
 " ***************************
 " Plugin specific settings
