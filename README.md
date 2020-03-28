@@ -36,6 +36,10 @@ My personal Linux config files.
     - pulseaudio, pavucontrol, pasystray (audio management)
     - Hack (monospace font)
 
+- Fonts:
+    - Hack (monospace)
+    - Roboto (sans-serif)
+
 - Command Line Utilities:
     - ripgrep
     - tldr
