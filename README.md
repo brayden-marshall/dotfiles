@@ -35,6 +35,7 @@ My personal Linux config files.
     - nm-applet (network manager, part of NetworkManager)
     - pulseaudio, pavucontrol, pasystray (audio management)
     - Hack (monospace font)
+    - xdg-open (xdg-utils package)
 
 - Fonts:
     - Hack (monospace)
