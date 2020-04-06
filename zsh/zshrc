@@ -52,6 +52,10 @@ if [ `command -v i3lock` ]; then
     alias -g lock=$DOTFILES/scripts/screen_lock.sh
 fi
 
+if [ `command -v thefuck` ]; then
+    eval $(thefuck --alias)
+fi
+
 alias weather="curl wttr.in"
 
 #=============================

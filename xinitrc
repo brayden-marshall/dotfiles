@@ -25,3 +25,4 @@ fi
 
 
 ./.config/bspwm/bspwmrc
+#exec bspwm -c ./.config/bspwm/bspwmrc
