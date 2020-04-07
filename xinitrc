@@ -24,5 +24,5 @@ if [ -f "$usermodmap" ]; then
 fi
 
 
-./.config/bspwm/bspwmrc
-#exec bspwm -c ./.config/bspwm/bspwmrc
+#./.config/bspwm/bspwmrc
+exec bspwm -c ./.config/bspwm/bspwmrc

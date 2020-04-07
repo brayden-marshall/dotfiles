@@ -18,7 +18,7 @@ bspc desktop -f 1
 sxhkd &
 
 # FIXME: a hack to get dunst.service to start correctly
-#systemctl --user restart dunst
+systemctl --user restart dunst
 
 # set screen lock hook
 xss-lock -- $DOTFILES/scripts/screen_lock.sh &
