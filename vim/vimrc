@@ -305,7 +305,6 @@ try
         if has('nvim')
             " Autocompletion and syntax highlighting
             Plug 'neoclide/coc.nvim', {'branch': 'release'}
-            Plug 'jackguo380/vim-lsp-cxx-highlight'
         else
             " syntax highlighting plugins to use if using regular ole vim:
             Plug 'OrangeT/vim-csharp'
@@ -317,6 +316,7 @@ try
         " various colorschemes
         Plug 'arcticicestudio/nord-vim'
         Plug 'davidosomething/vim-colors-meh'
+        Plug 'hardselius/warlock'
 
         " Javascript/Typescript
         Plug 'HerringtonDarkholme/yats.vim'
@@ -349,11 +349,10 @@ catch
     echo v:exception
 endtry
 
-
 " *************************
 " Colorscheme Settings
 " *************************
-colorscheme meh
+colorscheme warlock
 set background=dark
 
 " vim-airline   vim-airline-themes"
@@ -362,6 +361,8 @@ if g:colors_name=='gruvbox'
 elseif g:colors_name=='nord'
     let g:airline_theme='base16_nord'
 elseif g:colors_name=='meh'
+    let g:airline_theme='monochrome'
+elseif g:colors_name=='warlock'
     let g:airline_theme='monochrome'
 else
     let g:airline_theme='monochrome'
