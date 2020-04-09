@@ -10,10 +10,6 @@ endif
 " use python 3 by default
 let g:pyxversion=3
 
-" colorscheme settings
-colorscheme gruvbox
-set background=dark
-
 " if terminal supports 'termguicolors', turn it on
 if exists("&termguicolors")
     set termguicolors
@@ -309,6 +305,7 @@ try
         if has('nvim')
             " Autocompletion and syntax highlighting
             Plug 'neoclide/coc.nvim', {'branch': 'release'}
+            Plug 'jackguo380/vim-lsp-cxx-highlight'
         else
             " syntax highlighting plugins to use if using regular ole vim:
             Plug 'OrangeT/vim-csharp'
@@ -316,6 +313,10 @@ try
             Plug 'leafgarland/typescript-vim'
             Plug 'rust-lang/rust.vim'
         endif
+
+        " various colorschemes
+        Plug 'arcticicestudio/nord-vim'
+        Plug 'davidosomething/vim-colors-meh'
 
         " Javascript/Typescript
         Plug 'HerringtonDarkholme/yats.vim'
@@ -325,7 +326,7 @@ try
         Plug 'kongo2002/fsharp-vim'
 
         " C++
-        Plug 'octol/vim-cpp-enhanced-highlight'
+        "Plug 'octol/vim-cpp-enhanced-highlight'
 
         " Swift
         Plug 'keith/swift.vim'
@@ -348,11 +349,29 @@ catch
     echo v:exception
 endtry
 
-map <leader>nt :NERDTreeToggle<CR>
+
+" *************************
+" Colorscheme Settings
+" *************************
+colorscheme meh
+set background=dark
+
+" vim-airline   vim-airline-themes"
+if g:colors_name=='gruvbox'
+    let g:airline_theme='base16_gruvbox_dark_hard'
+elseif g:colors_name=='nord'
+    let g:airline_theme='base16_nord'
+elseif g:colors_name=='meh'
+    let g:airline_theme='monochrome'
+else
+    let g:airline_theme='monochrome'
+endif
 
 " ***************************
 " Plugin specific settings
 " ***************************
+
+map <leader>nt :NERDTreeToggle<CR>
 
 " vimwiki stuff
 let g:vimwiki_list = [
@@ -361,17 +380,6 @@ let g:vimwiki_list = [
 
 au BufRead,BufNewFile *.wiki set filetype=vimwiki
 ":autocmd FileType vimwiki map d :VimwikiMakeDiaryNote
-
-" vim-airline   vim-airline-themes"
-if g:colors_name=='gruvbox'
-    let g:airline_theme='base16_gruvbox_dark_hard'
-elseif g:colors_name=='molokai'
-    let g:airline_theme='base16_molokai'
-elseif g:colors_name=='dracula'
-    let g:airline_theme='dracula'
-else
-    let g:airline_theme='base16_molokai'
-endif
 
 " vim-python/python-syntax settings override "
 let g:python_highlight_all=1
@@ -408,13 +416,13 @@ command! -bang -nargs=* Rg
 
 " coc.nvim settings
 let g:coc_global_extensions=[
+    \ 'coc-clangd',
     \ 'coc-json',
     \ 'coc-tsserver',
     \ 'coc-html',
     \ 'coc-css',
-    \ 'coc-rls',
     \ 'coc-omnisharp',
-    \ 'coc-clangd'
+    \ 'coc-rls'
     \ ]
 
 " Use tab for trigger completion with characters ahead and navigate.
