@@ -266,7 +266,11 @@ set nofoldenable
 
 " screen will not be redrawn when executing macros, registers and some
 " other commands (should improve performance)
-set lazyredraw
+" set lazyredraw
+
+" setting to nolazyredraw because of some issues of buffers not being redrawn
+" when switching between tmux panes
+set nolazyredraw
 
 " round indent number to a multiple of 'shiftwidth' when using '>' and '<'
 " keys to indent lines
@@ -314,9 +318,10 @@ try
         endif
 
         " various colorschemes
-        Plug 'arcticicestudio/nord-vim'
-        Plug 'davidosomething/vim-colors-meh'
         Plug 'hardselius/warlock'
+        Plug 'morhetz/gruvbox'
+        Plug 'arcticicestudio/nord-vim'
+        Plug 'romainl/Apprentice'
 
         " Javascript/Typescript
         Plug 'HerringtonDarkholme/yats.vim'
@@ -352,16 +357,12 @@ endtry
 " *************************
 " Colorscheme Settings
 " *************************
-colorscheme warlock
+colorscheme gruvbox
 set background=dark
 
 " vim-airline   vim-airline-themes"
 if g:colors_name=='gruvbox'
     let g:airline_theme='base16_gruvbox_dark_hard'
-elseif g:colors_name=='nord'
-    let g:airline_theme='base16_nord'
-elseif g:colors_name=='meh'
-    let g:airline_theme='monochrome'
 elseif g:colors_name=='warlock'
     let g:airline_theme='monochrome'
 else

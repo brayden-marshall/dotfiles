@@ -37,7 +37,7 @@ export BSPWM_RICE_MODE_TMP_FILE="/tmp/bspwm_rice_mode"
 
 # gruvbox color variables for various use in scripts
 export THEME_BLACK="#282828"
-export THEME_WHITE="#EBDBB2"
+export THEME_GREY="#EBDBB2"
 export THEME_RED="#cc241d"
 export THEME_GREEN="#98971a"
 export THEME_YELLOW="#d79921"

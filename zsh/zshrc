@@ -90,7 +90,7 @@ scratch() {
     if (( $# == 0 )) then
         echo "scratch requires at least one argument"
     else
-        xdg-open $@ & disown && exit
+        xdg-open $@ & disown
     fi
 }
 

@@ -13,6 +13,7 @@ if [[ $RICE_MODE == "0" ]]; then
     RICE_MODE="1"
 
     COMPTON_CONFIG_PATH=$DOTFILES/compton/rice_mode_compton.conf
+    #COMPTON_CONFIG_PATH=$DOTFILES/compton/compton.conf
 else
     $DOTFILES/bspwm/bspwm_config.sh
     RICE_MODE="0"
