@@ -346,7 +346,9 @@ try
         Plug 'vim-airline/vim-airline'
         Plug 'vim-airline/vim-airline-themes'
         Plug 'vimwiki/vimwiki'
+
         Plug 'christoomey/vim-tmux-navigator'
+        Plug 'melonmanchan/vim-tmux-resizer'
 
         call plug#end()
     endif
