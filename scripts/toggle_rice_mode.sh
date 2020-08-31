@@ -12,13 +12,20 @@ if [[ $RICE_MODE == "0" ]]; then
     $DOTFILES/bspwm/rice_mode_config.sh
     RICE_MODE="1"
 
+    # set compton config
     COMPTON_CONFIG_PATH=$DOTFILES/compton/rice_mode_compton.conf
-    #COMPTON_CONFIG_PATH=$DOTFILES/compton/compton.conf
+
+    # set background
+    source $DOTFILES/rice_mode_fehbg
 else
     $DOTFILES/bspwm/bspwm_config.sh
     RICE_MODE="0"
 
+    # set compton config
     COMPTON_CONFIG_PATH=$DOTFILES/compton/compton.conf
+
+    # set background
+    source $DOTFILES/fehbg
 fi
 
 # restart compton with new config

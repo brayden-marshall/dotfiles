@@ -1,3 +1,7 @@
 #!/bin/bash
 
-setxkbmap -query | grep layout | cut -d":" -f2 | tr -d '[:space:]'
+layout=`setxkbmap -query | grep layout | cut -d":" -f2 | tr -d '[:space:]'`
+if [[ $layout == "dvorak" ]]; then
+    layout="dv"
+fi
+echo $layout

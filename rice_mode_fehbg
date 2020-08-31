@@ -1,0 +1,2 @@
+#!/bin/sh
+feh --no-fehbg --bg-fill $RICE_MODE_BACKGROUND_IMAGE_FILE

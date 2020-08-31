@@ -53,5 +53,13 @@ if [ -f $background_image_file ]; then
     export BACKGROUND_IMAGE_FILE=$background_image_file
 fi
 
+# set alternate background image
+rice_mode_background_image_file="$DOTFILES/wallpapers/glitch_moon.png"
+if [ -f $background_image_file ]; then
+    #feh --bg-fill $background_image_file
+    export RICE_MODE_BACKGROUND_IMAGE_FILE=$rice_mode_background_image_file
+fi
+
 # alacritty env variable for consistent font size
-export WINIT_HIDPI_FACTOR=1.0
+export WINIT_HIDPI_FACTOR=1
+export WINIT_X11_SCALE_FACTOR=1

@@ -13,10 +13,10 @@
 
 
 [colors]
-;orange = #FF6200
+orange = #FF6200
 ;orange = #d65d0e
 darkgray = ${xrdb:color8}
-orange = ${xrdb:color9}
+;orange = ${xrdb:color9}
 white = #ebdbb2
 gray = #585858
 black = #090909
@@ -38,7 +38,7 @@ alert = #fb4934
 bottom = true
 wm-restack = bspwm
 width = 100%
-height = 26
+height = 28
 offset-x = 0
 offset-y = 0
 
@@ -47,31 +47,30 @@ locale = en_US.UTF-8
 enable-ipc = true
 
 padding-left = 0
-padding-right = 2
+padding-right = 0
 
 module-margin-right = 0
 module-margin-left = 0
 
-modules-right = memory sep cpu sep temperature sep volume sep battery sep date sep keyboard
-modules-center =
+modules-right = memory sep cpu sep temperature sep volume sep battery sep keyboard
+modules-center = date
 modules-left = bspwm
 
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-underline-size = 0
-underline-color = ${colors.white}
+;underline-size = 0
+;underline-color = ${colors.white}
 
 ;tray-detached = false
 tray-position = right
 ;tray-offset-x = 0
 ;tray-offset-y = 0
 ;tray-maxsize = 16
-tray-padding = 0
+tray-padding = 2
 tray-scale = 1.0
 
-font-0 = "Hack:size=10;2"
-font-1 = "monospace:size=10;2"
+font-0 = "monospace:size=12;2"
 
 [module/keyboard]
 type=custom/script
@@ -128,19 +127,19 @@ battery = BAT0
 adapter = AC0
 full-at = 98
 
-label-charging = Charging %percentage%%
+label-charging = %percentage%%
 label-discharging = %percentage%%
 
-format-charging-prefix = "Bat: "
+format-charging-prefix = "Bat (CH): "
 format-discharging-prefix = "Bat: "
 format-full-prefix = "Bat: "
-format-charging-prefix-foreground = ${colors.red}
-format-discharging-prefix-foreground = ${colors.red}
-format-full-prefix-foreground = ${colors.red}
+format-charging-prefix-foreground = ${colors.orange}
+format-discharging-prefix-foreground = ${colors.orange}
+format-full-prefix-foreground = ${colors.orange}
 
 format-charging = <label-charging>
 format-charging-padding = 2
-format-charging-underline = ${colors.white}
+format-charging-underline = ${colors.red}
 
 format-discharging = <label-discharging>
 format-discharging-padding = 2
@@ -223,9 +222,10 @@ type = internal/date
 date = %I:%M
 date-alt = %I:%M %A %b %d,%Y
 interval = 2
-format-prefix = "Time: "
+;format-prefix = "Time: "
 format-prefix-foreground = ${colors.secondary}
 format-underline = ${colors.white}
+format-underline-size = 2
 ;format-background = ${colors.black}
 format-foreground = ${colors.foreground}
 format-padding = 2

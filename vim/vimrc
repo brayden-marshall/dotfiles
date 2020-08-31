@@ -121,7 +121,7 @@ au BufNewFile,BufRead *.py
 au BufNewFile,BufRead *.go
     \ set tabstop=4 |
     \ set textwidth=99 |
-    \ set noexpandtab |
+    \ set expandtab |
     \ set autoindent |
     \ set fileformat=unix |
     \ set filetype=go
@@ -130,8 +130,15 @@ au BufNewFile,BufRead *.go
 let g:go_highlight_structs = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_format_strings = 1
+
+" set some useful options for vim-go
+let g:go_fmt_fail_silently = 1
+let g:go_imports_autosave = 1
 
 " YAML file format settings
 au BufNewFile,BufRead *.yml,*.yaml
@@ -327,11 +334,14 @@ try
         Plug 'HerringtonDarkholme/yats.vim'
         Plug 'MaxMEllon/vim-jsx-pretty'
 
+        " Go
+        Plug 'fatih/vim-go'
+
         " F#
         Plug 'kongo2002/fsharp-vim'
 
         " C++
-        "Plug 'octol/vim-cpp-enhanced-highlight'
+        Plug 'octol/vim-cpp-enhanced-highlight'
 
         " Swift
         Plug 'keith/swift.vim'
@@ -343,6 +353,7 @@ try
 
         "Misc.
         Plug 'scrooloose/nerdtree'
+        Plug 'ryanoasis/vim-devicons'
         Plug 'vim-airline/vim-airline'
         Plug 'vim-airline/vim-airline-themes'
         Plug 'vimwiki/vimwiki'
@@ -426,7 +437,8 @@ let g:coc_global_extensions=[
     \ 'coc-html',
     \ 'coc-css',
     \ 'coc-omnisharp',
-    \ 'coc-rls'
+    \ 'coc-rls',
+    \ 'coc-go'
     \ ]
 
 " Use tab for trigger completion with characters ahead and navigate.
