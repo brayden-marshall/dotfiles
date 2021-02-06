@@ -27,6 +27,11 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
+# if go is installed, set the GOPATH env variable to $HOME/kitchen-sink/go
+if [ `command -v go` ]; then
+    go env -w GOPATH="$HOME/kitchen-sink/go"
+fi
+
 # environment variables
 export PATH="$PATH:/usr/local/go/bin"
 export PATH="$PATH:$HOME/.cargo/bin:$HOME/dotnet/tools"

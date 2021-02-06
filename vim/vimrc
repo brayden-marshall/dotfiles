@@ -319,7 +319,6 @@ try
         else
             " syntax highlighting plugins to use if using regular ole vim:
             Plug 'OrangeT/vim-csharp'
-            Plug 'vim-python/python-syntax'
             Plug 'leafgarland/typescript-vim'
             Plug 'rust-lang/rust.vim'
         endif
@@ -327,12 +326,13 @@ try
         " various colorschemes
         Plug 'hardselius/warlock'
         Plug 'morhetz/gruvbox'
-        Plug 'arcticicestudio/nord-vim'
-        Plug 'romainl/Apprentice'
 
         " Javascript/Typescript
         Plug 'HerringtonDarkholme/yats.vim'
         Plug 'MaxMEllon/vim-jsx-pretty'
+
+        " Python
+        Plug 'vim-python/python-syntax'
 
         " Go
         Plug 'fatih/vim-go'
@@ -432,6 +432,7 @@ command! -bang -nargs=* Rg
 " coc.nvim settings
 let g:coc_global_extensions=[
     \ 'coc-clangd',
+    \ 'coc-python',
     \ 'coc-json',
     \ 'coc-tsserver',
     \ 'coc-html',

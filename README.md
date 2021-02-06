@@ -6,12 +6,6 @@ My personal Linux config files.
 
 - when connecting a laptop to an external display, then unplugging from that display to return to using the laptop's display, reloading bspwm_config.sh does not work
 
-## Things to add
-
-- Firefox customization:
-    - custom home page
-    - ???
-
 ## Dependencies
 
 - bspwm
@@ -36,6 +30,7 @@ My personal Linux config files.
     - pulseaudio, pavucontrol, pasystray (audio management)
     - Hack (monospace font)
     - xdg-open (xdg-utils package)
+    - filelight (graphical disk usage analyzer)
 
 - Fonts:
     - Hack (monospace)
