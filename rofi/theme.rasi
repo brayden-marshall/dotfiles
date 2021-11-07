@@ -36,7 +36,7 @@
     scrollbar-handle:            @border-color;
 
     normal-background:           @background;
-    normal-foreground:           @foreground;
+    normal-foreground:           #FFFFFF;
     alternate-normal-background: @gruvbox-dark-bg0-soft;
     alternate-normal-foreground: @foreground;
     selected-normal-background:  @gruvbox-dark-bg3;
@@ -97,6 +97,11 @@ element {
     padding: 2px;
     background-color: @normal-background;
     text-color:       @normal-foreground;
+}
+
+element-text {
+    background-color: inherit;
+    text-color:       inherit;
 }
 
 element.normal.normal {
