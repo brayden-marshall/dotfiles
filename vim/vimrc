@@ -157,6 +157,7 @@ au BufNewFile,BufRead *.prose
     \ setlocal nocindent |
     \ setlocal nosmartindent |
     \ setlocal indentexpr=  |
+    \ execute "CocDisable" |
     \ set nonumber |
     \ set norelativenumber |
     \ setlocal columns=100
