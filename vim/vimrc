@@ -387,6 +387,8 @@ endif
 " ***************************
 
 map <leader>nt :NERDTreeToggle<CR>
+map <leader>nf :NERDTreeFocus<CR>
+let g:NERDTreeWinPos = "left"
 
 " vimwiki stuff
 let g:vimwiki_list = [

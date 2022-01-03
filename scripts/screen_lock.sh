@@ -35,28 +35,28 @@ i3lock \
     --tiling \
     --keylayout 2\
     \
-    --insidevercolor=$black\
-    --insidewrongcolor=$black\
-    --insidecolor=$black \
+    --insidever-color=$black\
+    --insidewrong-color=$black\
+    --inside-color=$black \
     \
-    --ringvercolor=$green\
-    --ringwrongcolor=$red\
-    --ringcolor=$white\
+    --ringver-color=$green\
+    --ringwrong-color=$red\
+    --ring-color=$white\
     --line-uses-ring\
     \
-    --keyhlcolor=$green\
-    --bshlcolor=$red\
-    --separatorcolor=$green\
-    --verifcolor=$white \
-    --layoutcolor=$white \
-    --wrongcolor=$white \
-    --timecolor=$white \
-    --datecolor=$white \
+    --keyhl-color=$green\
+    --bshl-color=$red\
+    --separator-color=$green\
+    --verif-color=$white \
+    --layout-color=$white \
+    --wrong-color=$white \
+    --time-color=$white \
+    --date-color=$white \
     \
-    --veriftext="Verifying..." \
-    --wrongtext=$wrong_password_message \
-    --noinputtext="No Input" \
-    --locktext="Locking..." \
+    --verif-text="Verifying..." \
+    --wrong-text=$wrong_password_message \
+    --noinput-text="No Input" \
+    --lock-text="Locking..." \
     \
     --radius 110 \
     --ring-width 12 \
