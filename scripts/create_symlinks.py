@@ -22,6 +22,11 @@ files_to_link = {
     "dotfiles/pulse/daemon.conf": ".config/pulse/daemon.conf",
 }
 
+if os.name == "nt":
+    files_to_link = {
+        "dotfiles/vim/vsvimrc": ".vsvimrc",
+    }
+
 dirs_to_link = {
     "dotfiles/vim/colors": ".vim/colors",
     "dotfiles/i3": ".i3",
