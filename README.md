@@ -1,6 +1,6 @@
 # Dotfiles
 
-My personal Linux config files.
+My personal config files.
 
 ## Issues:
 
