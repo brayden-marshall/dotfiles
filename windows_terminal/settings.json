@@ -184,7 +184,7 @@
                 "commandline": "cmd.exe /k %CMDER_ROOT%\\vendor\\init.bat",
                 "cursorShape": "filledBox",
                 "guid": "{1b8db2d7-936b-51a3-bab3-f0b75de86891}",
-                "icon": "C:\\tools\\Cmder\\icons\\cmder.ico",
+                "icon": "%CMDER_ROOT%\\icons\\cmder.ico",
                 "name": "Cmder",
                 "startingDirectory": "%USERPROFILE%",
                 "suppressApplicationTitle": true,
