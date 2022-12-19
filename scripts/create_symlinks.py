@@ -28,7 +28,6 @@ if os.name == "nt":
     }
 
 dirs_to_link = {
-    "dotfiles/vim/colors": ".vim/colors",
     "dotfiles/i3": ".i3",
     "dotfiles/i3": ".config/i3",
     "dotfiles/bspwm": ".config/bspwm",
