@@ -310,7 +310,7 @@ set nojoinspaces
 " Vim-Plug Section
 " ***************************
 try
-    if isdirectory(expand('~/.vim/plugged'))
+    if isdirectory(expand('~/.vim/plugged')) || has('win32')
         call plug#begin(expand('~/.vim/plugged'))
 
         if has('nvim')
@@ -327,10 +327,6 @@ try
         Plug 'hardselius/warlock'
         Plug 'morhetz/gruvbox'
         Plug 'axvr/photon.vim'
-        Plug 'preservim/vim-colors-pencil'
-        Plug 'nikolvs/vim-sunbather'
-        Plug 'widatama/vim-phoenix'
-        Plug 'andreypopp/vim-colors-plain'
 
         " Javascript/Typescript
         Plug 'HerringtonDarkholme/yats.vim'
