@@ -15,63 +15,11 @@ if exists("&termguicolors")
     set termguicolors
 endif
 
-" map leader key to space bar
-let mapleader=" "
-
 " if ripgrep is installed, use it for grep commands within vim
 if executable('rg')
     set grepprg=rg\ --no-heading\ --vimgrep
     set grepformat=%f:%l:%c:%m
 endif
-
-" =====================================================
-" Mappings
-" =====================================================
-
-" remap window split keybinds
-" uses CTRL+<h,j,k,l> to navigate windows
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-
-" remap code-folding keybinds
-" leader+f+<C,O> closes, opens folds recursively up to the top level
-" leader+f+<c,o> closes, opens the current fold
-" leader+f+<f,F> closes, opens all folds in the buffer
-nnoremap <leader>fc zc
-nnoremap <leader>fC zC
-nnoremap <leader>fo zo
-nnoremap <leader>fO zO
-nnoremap <leader>ff zM
-" zz to center the screen on your cursor after opening folds
-nnoremap <leader>fF zR zz
-
-" remap double leader press to switch to last visited buffer
-nnoremap <leader><leader> <C-^>
-
-" mappings to fuzzy search by file or buffer
-" <leader>sf for search files
-" <leader>sb for search buffers
-" <leader>ss search with ripgrep
-nnoremap <leader>sf :Files<CR>
-nnoremap <leader>sb :Buffers<CR>
-nnoremap <leader>ss :Rg<CR>
-"map <C-p> :Files<CR>
-"nmap <leader>; :Buffers<CR>
-
-" center search results
-nnoremap <silent> n nzz
-nnoremap <silent> N Nzz
-nnoremap <silent> * *zz
-nnoremap <silent> # #zz
-nnoremap <silent> g* g*zz
-
-" very magic search by default (uses special characters as special search characters
-" and requires literals to be escaped
-nnoremap ? ?\v
-nnoremap / /\v
-cnoremap %s/ %sm/
 
 " *********************************************
 " Tab/Spacing Settings For Different File Types
@@ -387,8 +335,6 @@ endif
 " Plugin specific settings
 " ***************************
 
-map <leader>nt :NERDTreeToggle<CR>
-map <leader>nf :NERDTreeFocus<CR>
 let g:NERDTreeWinPos = "left"
 
 " vimwiki stuff
@@ -445,6 +391,74 @@ let g:coc_global_extensions=[
     \ 'coc-go'
     \ ]
 
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Turn off coc.nvim for certain file types
+au BufRead,BufNewFile *.wiki,*.txt CocDisable
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" =====================================================
+" Mappings
+" =====================================================
+
+" map leader key to space bar
+let mapleader=" "
+
+" remap window split keybinds
+" uses CTRL+<h,j,k,l> to navigate windows
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" remap code-folding keybinds
+" leader+f+<C,O> closes, opens folds recursively up to the top level
+" leader+f+<c,o> closes, opens the current fold
+" leader+f+<f,F> closes, opens all folds in the buffer
+nnoremap <leader>fc zc
+nnoremap <leader>fC zC
+nnoremap <leader>fo zo
+nnoremap <leader>fO zO
+nnoremap <leader>ff zM
+" zz to center the screen on your cursor after opening folds
+nnoremap <leader>fF zR zz
+
+" remap double leader press to switch to last visited buffer
+nnoremap <leader><leader> <C-^>
+
+" mappings to fuzzy search by file or buffer
+" <leader>sf for search files
+" <leader>sb for search buffers
+" <leader>ss search with ripgrep
+nnoremap <leader>sf :Files<CR>
+nnoremap <leader>sb :Buffers<CR>
+nnoremap <leader>ss :Rg<CR>
+"map <C-p> :Files<CR>
+"nmap <leader>; :Buffers<CR>
+
+" center search results
+nnoremap <silent> n nzz
+nnoremap <silent> N Nzz
+nnoremap <silent> * *zz
+nnoremap <silent> # #zz
+nnoremap <silent> g* g*zz
+
+" very magic search by default (uses special characters as special search characters
+" and requires literals to be escaped
+nnoremap ? ?\v
+nnoremap / /\v
+cnoremap %s/ %sm/
+
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
 if isdirectory(expand('~/.vim/plugged'))
@@ -457,11 +471,6 @@ if isdirectory(expand('~/.vim/plugged'))
         \ <SID>check_back_space() ? "\<TAB>" : "\<TAB>"     
     inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 endif
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
 
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
@@ -483,14 +492,6 @@ nnoremap <leader>sD :call <SID>show_documentation()<CR>
 nmap <leader>ge <Plug>(coc-diagnostic-next)
 nmap <leader>gE <Plug>(coc-diagnostic-prev)
 
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
 
@@ -498,5 +499,6 @@ nmap <leader>rn <Plug>(coc-rename)
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
-" Turn off coc.nvim for certain file types
-au BufRead,BufNewFile *.wiki,*.txt CocDisable
+" Use <n-t> to open NERDTree and <n-f> to focus it
+map <leader>nt :NERDTreeToggle<CR>
+map <leader>nf :NERDTreeFocus<CR>
