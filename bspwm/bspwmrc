@@ -38,7 +38,7 @@ fi
 
 # start compton
 if [ `command -v compton` ]; then
-    compton --config $HOME/.config/compton/compton.conf -b
+    #compton --config $HOME/.config/compton/compton.conf -b
 fi
 
 # start NetworkManager applet

@@ -140,5 +140,7 @@ configuration {
 	me-select-entry: "MousePrimary";
 	me-accept-entry: "MouseDPrimary";
 	me-accept-custom: "Control+MouseDPrimary";
+        kb-element-next: "";
+        kb-element-prev: "";
 }
 @theme "/home/brayden-marshall/dotfiles/rofi/theme.rasi"

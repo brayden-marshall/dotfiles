@@ -16,7 +16,8 @@ if exists("&termguicolors")
 endif
 
 " map leader key to space bar
-let mapleader=" "
+let mapleader="\<Space>"
+let maplocalleader="\<Space>"
 
 " if ripgrep is installed, use it for grep commands within vim
 if executable('rg')
@@ -335,7 +336,7 @@ try
         Plug 'vim-python/python-syntax'
 
         " Go
-        Plug 'fatih/vim-go'
+        "Plug 'fatih/vim-go'
 
         " F#
         Plug 'kongo2002/fsharp-vim'
@@ -345,6 +346,10 @@ try
 
         " Swift
         Plug 'keith/swift.vim'
+
+        " Common Lisp
+        "Plug 'vlime/vlime', {'rtp': 'vim/'}
+        "Plug 'kovisoft/paredit'
 
         " Fuzzy searching
         Plug 'airblade/vim-rooter'
@@ -441,7 +446,8 @@ let g:coc_global_extensions=[
     \ 'coc-css',
     \ 'coc-omnisharp',
     \ 'coc-rls',
-    \ 'coc-go'
+    \ 'coc-go',
+    \ 'coc-cl'
     \ ]
 
 " Use tab for trigger completion with characters ahead and navigate.
