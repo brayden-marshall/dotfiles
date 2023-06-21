@@ -7,5 +7,5 @@ if [[ $layout == 'dv' ]]; then
 elif [[ $layout == 'us' ]]; then
     setxkbmap ru
 else
-    setxkbmap dvorak
+    setxkbmap us dvorak
 fi

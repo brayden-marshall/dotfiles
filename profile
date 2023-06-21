@@ -35,6 +35,7 @@ fi
 # environment variables
 export PATH="$PATH:/usr/local/go/bin"
 export PATH="$PATH:$HOME/.cargo/bin:$HOME/dotnet/tools"
+export PATH="$PATH:$HOME/.roswell/bin"
 export XDG_CONFIG_HOME="$HOME/.config"
 export DOTFILES="$HOME/dotfiles"
 

@@ -126,6 +126,8 @@ au BufNewFile,BufRead *.go
     \ set autoindent |
     \ set fileformat=unix |
     \ set filetype=go
+" add missing imports on save
+autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
 
 " turn on golang highlighting options
 let g:go_highlight_structs = 1
@@ -348,11 +350,10 @@ try
         Plug 'keith/swift.vim'
 
         " Common Lisp
-        "Plug 'vlime/vlime', {'rtp': 'vim/'}
+        Plug 'vlime/vlime', {'rtp': 'vim/'}
         "Plug 'kovisoft/paredit'
 
         " Fuzzy searching
-        Plug 'airblade/vim-rooter'
         Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
         Plug 'junegunn/fzf.vim'
 
@@ -446,9 +447,13 @@ let g:coc_global_extensions=[
     \ 'coc-css',
     \ 'coc-omnisharp',
     \ 'coc-rls',
-    \ 'coc-go',
-    \ 'coc-cl'
+    \ 'coc-go'
     \ ]
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
@@ -458,15 +463,9 @@ if isdirectory(expand('~/.vim/plugged'))
     "    \ <SID>check_back_space() ? "\<TAB>" :
     "    \ coc#refresh()
     inoremap <silent><expr> <TAB>
-        \ pumvisible() ? "\<C-n>" :
-        \ <SID>check_back_space() ? "\<TAB>" : "\<TAB>"     
+        \ pumvisible() ? "\<C-n>" : "\<TAB>"
     inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 endif
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
 
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
@@ -505,3 +504,10 @@ nmap <leader>f  <Plug>(coc-format-selected)
 
 " Turn off coc.nvim for certain file types
 au BufRead,BufNewFile *.wiki,*.txt CocDisable
+
+" Remappings for vlime
+augroup LocalVlimeKeys
+    autocmd!
+    autocmd FileType lisp nnoremap <silent> <buffer> <leader>ts
+        \ :call vlime#plugin#SendToREPL(vlime#ui#CurExprOrAtom())<cr>
+augroup end
