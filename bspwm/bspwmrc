@@ -1,4 +1,6 @@
 #!/bin/bash
+$DOTFILES/scripts/log.sh "================= NEW STARTUP ================="
+$DOTFILES/scripts/log.sh "Running bspwmrc"
 
 # runs all bspwm config options, including monitor/desktop detection and setup; setting
 # keyboard layout; touchpad settings etc.
@@ -29,23 +31,28 @@ xss-lock -- $DOTFILES/scripts/screen_lock.sh &
 # start polybar
 if [ `command -v polybar` ]; then
     $DOTFILES/polybar/polybar.sh
+    $DOTFILES/scripts/log.sh "Started polybar"
 fi
 
 # start power manager
 if [ `command -v xfce4-power-manager` ]; then
-    xfce4-power-manager
+    xfce4-power-manager --daemon
+    $DOTFILES/scripts/log.sh "Started xfce-4-power-manager"
 fi
 
 # start compton
 if [ `command -v compton` ]; then
-    #compton --config $HOME/.config/compton/compton.conf -b
+    compton --config $HOME/.config/compton/compton.conf -b
+    $DOTFILES/scripts/log.sh "Started compton"
 fi
 
 # start NetworkManager applet
 if [ `command -v nm-applet` ]; then
     nm-applet &
+    $DOTFILES/scripts/log.sh "Started nm-applet"
 fi
 
 if [ `command -v pasystray` ]; then
     pasystray &
+    $DOTFILES/scripts/log.sh "Started pasystray"
 fi

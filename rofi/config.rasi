@@ -1,5 +1,5 @@
 configuration {
-        modi: "window,run,ssh,drun";
+        modi: "drun,window,filebrowser";
 	width: 50;
 	lines: 15;
 	columns: 1;
@@ -21,7 +21,7 @@ configuration {
 	window-match-fields: "all";
         //icon-theme ;
 	drun-match-fields: "name,generic,exec,categories";
-	drun-show-actions: false;
+	drun-show-actions: true;
 	drun-display-format: " {name} [<span weight='light' size='small'><i>({generic})</i></span>]";
 	disable-history: false;
 	ignored-prefixes: "";

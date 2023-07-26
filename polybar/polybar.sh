@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+$DOTFILES/scripts/log.sh "Running polybar.sh"
 
 # Terminate already running bar instances
 killall -q polybar

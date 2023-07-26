@@ -1,6 +1,11 @@
 # Dotfiles
 
-My personal Linux config files.
+My personal config files.
+
+## TODO:
+
+- Add a rofi power menu, like one from here: https://github.com/adi1090x/rofi 
+- Spice up the rofi launcher, again using inspiration from here: https://github.com/adi1090x/rofi 
 
 ## Issues:
 

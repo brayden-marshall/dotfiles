@@ -1,4 +1,5 @@
 #!/bin/sh
+$DOTFILES/scripts/log.sh "Started xinit"
 
 userresources=$HOME/.Xresources
 usermodmap=$HOME/.Xmodmap
@@ -25,3 +26,4 @@ fi
 
 #./.config/bspwm/bspwmrc
 exec bspwm -c ./.config/bspwm/bspwmrc
+$DOTFILES/scripts/log.sh "Ended xinit"

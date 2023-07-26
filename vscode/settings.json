@@ -1,0 +1,23 @@
+{
+  "workspaceSidebar.cleanLabels": false,
+  "workspaceSidebar.folder": "%HOMEPATH%\\source\\repos\\vscode_workspaces",
+  "security.workspace.trust.untrustedFiles": "open",
+  "workbench.colorTheme": "Nord",
+  "editor.bracketPairColorization.enabled": false,
+  "vim.neovimPath": "C:\\tools\\neovim\\nvim-win64\\bin\\nvim.exe",
+  "vim.neovimConfigPath": "%HOMEPATH%\\dotfiles\\vim\\init.vim",
+  "vim.neovimUseConfigFile": true,
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "workbench.editor.titleScrollbarSizing": "large",
+  "workbench.editor.wrapTabs": true,
+  "workbench.editor.limit.enabled": true,
+  "workbench.editor.limit.value": 20,
+  "workbench.editor.limit.excludeDirty": true,
+  "workbench.editor.openPositioning": "last",
+  "workbench.editor.tabSizing": "shrink",
+  "zenMode.hideLineNumbers": false,
+  "zenMode.hideStatusBar": false,
+  "editor.renderWhitespace": "trailing",
+}

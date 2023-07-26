@@ -1,4 +1,5 @@
 #!/bin/bash
+$DOTFILES/scripts/log.sh "Running bspwm_config.sh"
 
 # monitor settings
 #bspc monitor -d I II III IV V VI VII VIII IX X
