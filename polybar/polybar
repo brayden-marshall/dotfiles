@@ -131,8 +131,8 @@ label-active-font = 1
 label-charging = %percentage%%
 label-discharging = %percentage%%
 
-format-charging-prefix = " "
-format-discharging-prefix = " "
+format-charging-prefix = " "
+format-discharging-prefix = ""
 format-full-prefix = " "
 format-charging-prefix-foreground = ${colors.orange}
 format-discharging-prefix-foreground = ${colors.orange}
@@ -142,15 +142,21 @@ format-charging = <label-charging>
 format-charging-padding = 2
 format-charging-underline = ${colors.red}
 
-format-discharging = <label-discharging>
+format-discharging = <ramp-capacity> <label-discharging>
 format-discharging-padding = 2
 format-discharging-underline = ${self.format-charging-underline}
 
 format-full-underline = ${self.format-charging-underline}
 format-full-padding = 2
 
-ramp-capacity-0 =
-ramp-capacity-foreground = ${colors.foreground-alt}
+ramp-capacity-0 = " "
+ramp-capacity-1 = " "
+ramp-capacity-2 = " "
+ramp-capacity-3 = " "
+ramp-capacity-4 = " "
+ramp-capacity-5 = " "
+ramp-capacity-6 = " "
+ramp-capacity-foreground = ${colors.orange}
 
 animation-charging-0 =
 animation-charging-foreground = ${colors.foreground-alt}
@@ -266,9 +272,9 @@ format-volume-underline = ${colors.white}
 label-volume = 🔊%{F#928374}%{F-}%percentage:3%%
 ;label-volume-foreground = ${color.white}
 
-label-muted =%{F#928374} %{F-}mute
+label-muted =%{F#928374}%{F-}mute
 format-muted = <label-muted>
-format-muted-prefix = "Vol:"
+format-muted-prefix = "Vol: "
 format-muted-prefix-foreground = ${colors.yellow}
 format-muted-underline = ${colors.white}
 format-muted-padding = 2

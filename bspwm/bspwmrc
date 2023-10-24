@@ -41,10 +41,10 @@ if [ `command -v xfce4-power-manager` ]; then
 fi
 
 # start compton
-if [ `command -v compton` ]; then
-    compton --config $HOME/.config/compton/compton.conf -b
-    $DOTFILES/scripts/log.sh "Started compton"
-fi
+#if [ `command -v compton` ]; then
+#    compton --config $HOME/.config/compton/compton.conf -b
+#    $DOTFILES/scripts/log.sh "Started compton"
+#fi
 
 # start NetworkManager applet
 if [ `command -v nm-applet` ]; then

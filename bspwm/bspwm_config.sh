@@ -8,6 +8,7 @@ if [[ `xrandr -q | grep ' connected' | cut -d ' ' -f1 | grep HDMI2` == '' ]]; th
     bspc monitor eDP1 -d 1 2 3 4 5
 else
     xrandr --output HDMI2 --primary --mode 1920x1080 --rotate normal
+    xrandr --output HDMI2 --brightness 0.8
     xrandr --output eDP1 --off
         #--output eDP1 --mode 1920x1080 --rotate normal --left-of HDMI2
     bspc monitor HDMI2 -d 1 2 3 4 5

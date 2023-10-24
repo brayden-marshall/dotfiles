@@ -408,9 +408,6 @@ function! s:show_documentation()
   endif
 endfunction
 
-" Turn off coc.nvim for certain file types
-au BufRead,BufNewFile *.wiki,*.txt CocDisable
-
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
@@ -512,7 +509,7 @@ map <leader>nt :NERDTreeToggle<CR>
 map <leader>nf :NERDTreeFocus<CR>
 
 " Turn off coc.nvim for certain file types
-au BufRead,BufNewFile *.wiki,*.txt CocDisable
+" autocmd BufNewFile,BufReadPost *.wiki,*.txt :silent CocDisable
 
 " Remappings for vlime
 augroup LocalVlimeKeys

@@ -53,7 +53,7 @@ export THEME_CYAN="#689d6a"
 export THEME_WHITE="#a89984"
 
 # set background image
-background_image_file="$DOTFILES/wallpapers/naisu.png"
+background_image_file="$DOTFILES/wallpapers/Doom_wallpaper.jpg"
 if [ -f $background_image_file ]; then
     #feh --bg-fill $background_image_file
     export BACKGROUND_IMAGE_FILE=$background_image_file

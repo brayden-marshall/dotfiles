@@ -36,6 +36,7 @@ dirs_to_link = {
     "dotfiles/compton": ".config/compton",
     "dotfiles/dunst": ".config/dunst",
     "dotfiles/fontconfig": ".config/fontconfig",
+    "dotfiles/autorandr": ".config/autorandr",
 }
 
 for key in files_to_link:

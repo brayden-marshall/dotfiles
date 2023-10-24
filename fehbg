@@ -1,2 +1,1 @@
-#!/bin/sh
 feh --no-fehbg --bg-fill $BACKGROUND_IMAGE_FILE
