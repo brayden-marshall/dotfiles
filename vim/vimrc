@@ -77,8 +77,10 @@ au BufNewFile,BufRead *.go
     \ set autoindent |
     \ set fileformat=unix |
     \ set filetype=go
-" add missing imports on save
-autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
+if exists('CocAction')
+    " add missing imports on save
+    autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
+endif
 
 " turn on golang highlighting options
 let g:go_highlight_structs = 1
@@ -168,7 +170,7 @@ set confirm
 set visualbell
 
 " Enable use of the mouse for all modes
-set mouse=a
+silent! set mouse=a
 
 " Set the command window height to 2 lines, to avoid many cases of having to
 " 'press <Enter> to continue'
@@ -190,7 +192,7 @@ set splitright
 set splitbelow
 
 " set clipboard to use system clipboard
-set clipboard+=unnamedplus
+set clipboard+=
 
 " probably useless, but keep just in case
 set nocompatible
@@ -203,7 +205,7 @@ set colorcolumn=80
 
 " automatically change to the directory of the current file when switching
 " files/buffers
-set autochdir
+silent! set autochdir
 
 " Save whenever switching windows or leaving vim. This is useful when running
 " the tests inside vim without having to save all files first.
@@ -220,10 +222,10 @@ set browsedir=buffer
 
 " code folds will be automatically created based on the syntax settings of the
 " current buffer
-set foldmethod=syntax
+silent! set foldmethod=syntax
 
 " start with code completely unfolded when opening a file
-set nofoldenable
+silent! set nofoldenable
 
 " screen will not be redrawn when executing macros, registers and some
 " other commands (should improve performance)
@@ -252,7 +254,7 @@ set nowritebackup
 set shortmess+=c
 
 " always show signcolumn. prevents buffer from moving when showing/hiding it
-set signcolumn=yes
+silent! set signcolumn=yes
 
 " always keep at least 2 lines above and below the cursor
 set scrolloff=2
@@ -270,11 +272,13 @@ try
         if has('nvim')
             " Autocompletion and syntax highlighting
             Plug 'neoclide/coc.nvim', {'branch': 'release'}
+            Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
         else
             " syntax highlighting plugins to use if using regular ole vim:
             Plug 'OrangeT/vim-csharp'
             Plug 'leafgarland/typescript-vim'
             Plug 'rust-lang/rust.vim'
+            Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
         endif
 
         " various colorschemes
@@ -306,7 +310,6 @@ try
         "Plug 'kovisoft/paredit'
 
         " Fuzzy searching
-        Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
         Plug 'junegunn/fzf.vim'
 
         "Misc.
@@ -315,6 +318,7 @@ try
         Plug 'vim-airline/vim-airline'
         Plug 'vim-airline/vim-airline-themes'
         Plug 'vimwiki/vimwiki'
+        Plug 'svermeulen/vim-easyclip'
 
         Plug 'christoomey/vim-tmux-navigator'
         Plug 'melonmanchan/vim-tmux-resizer'
@@ -345,6 +349,9 @@ endif
 " ***************************
 
 let g:NERDTreeWinPos = "left"
+
+let g:EasyClipShareYanks = 1
+let g:EasyClipEnableBlackHoleRedirect = 0
 
 " vimwiki stuff
 let g:vimwiki_list = [
@@ -381,11 +388,6 @@ let g:fzf_colors =
   \ 'marker':  ['fg', 'Keyword'],
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
-
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
-  \   fzf#vim#with_preview(), <bang>0)
 
 " coc.nvim settings
 let g:coc_global_extensions=[
@@ -427,6 +429,9 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+" mappings for working with buffers
+nnoremap <Leader>b :buffers<CR>:buffer<Space>
+
 " remap code-folding keybinds
 " leader+f+<C,O> closes, opens folds recursively up to the top level
 " leader+f+<c,o> closes, opens the current fold
@@ -439,18 +444,14 @@ nnoremap <leader>ff zM
 " zz to center the screen on your cursor after opening folds
 nnoremap <leader>fF zR zz
 
+" mappings for omni-completion
+inoremap <C-Space> <C-X><C-O>
+
+" mappings for jumps
 " remap double leader press to switch to last visited buffer
 nnoremap <leader><leader> <C-^>
-
-" mappings to fuzzy search by file or buffer
-" <leader>sf for search files
-" <leader>sb for search buffers
-" <leader>ss search with ripgrep
-nnoremap <leader>sf :Files<CR>
-nnoremap <leader>sb :Buffers<CR>
-nnoremap <leader>ss :Rg<CR>
-"map <C-p> :Files<CR>
-"nmap <leader>; :Buffers<CR>
+nnoremap <leader>jb <C-O>
+nnoremap <leader>jf <C-I>
 
 " center search results
 nnoremap <silent> n nzz
@@ -478,35 +479,47 @@ if isdirectory(expand('~/.vim/plugged'))
 endif
 
 " Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
+if exists("CocAction")
+    imap <silent><expr> <c-space> coc#refresh()
 
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
-" Coc only does snippet and additional edit on confirm.
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+    " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+    " Coc only does snippet and additional edit on confirm.
+    inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
-" Remap keys for gotos
-nmap <leader>gd <Plug>(coc-definition)
-nmap <leader>gt <Plug>(coc-type-definition)
-nmap <leader>gi <Plug>(coc-implementation)
-nmap <leader>gr <Plug>(coc-references)
+    " Remap keys for gotos
+    nmap <leader>gd <Plug>(coc-definition)
+    nmap <leader>gt <Plug>(coc-type-definition)
+    nmap <leader>gi <Plug>(coc-implementation)
+    nmap <leader>gr <Plug>(coc-references)
 
-" (sd for show documentation)
-nnoremap <leader>sD :call <SID>show_documentation()<CR>
+    " (sd for show documentation)
+    nnoremap <leader>sD :call <SID>show_documentation()<CR>
 
-" Navigate diagnosticts errors (ge for goto error)
-nmap <leader>ge <Plug>(coc-diagnostic-next)
-nmap <leader>gE <Plug>(coc-diagnostic-prev)
+    " Navigate diagnosticts errors (ge for goto error)
+    nmap <leader>ge <Plug>(coc-diagnostic-next)
+    nmap <leader>gE <Plug>(coc-diagnostic-prev)
 
-" Remap for rename current word
-nmap <leader>rn <Plug>(coc-rename)
+    " Remap for rename current word
+    nmap <leader>rn <Plug>(coc-rename)
 
-" Remap for format selected region
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+    " Remap for format selected region
+    xmap <leader>f  <Plug>(coc-format-selected)
+    nmap <leader>f  <Plug>(coc-format-selected)
+endif
 
 " Use <n-t> to open NERDTree and <n-f> to focus it
 map <leader>nt :NERDTreeToggle<CR>
 map <leader>nf :NERDTreeFocus<CR>
+
+" mappings to fuzzy search by file or buffer
+" <leader>sf for search files
+" <leader>sb for search buffers
+" <leader>ss search with ripgrep
+nnoremap <leader>sf :Files<CR>
+nnoremap <leader>sb :Buffers<CR>
+nnoremap <leader>ss :Rg<CR>
+"map <C-p> :Files<CR>
+"nmap <leader>; :Buffers<CR>
 
 " Turn off coc.nvim for certain file types
 " autocmd BufNewFile,BufReadPost *.wiki,*.txt :silent CocDisable

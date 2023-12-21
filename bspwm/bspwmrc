@@ -28,12 +28,6 @@ xss-lock -- $DOTFILES/scripts/screen_lock.sh &
 # set background image
 ~/.fehbg &
 
-# start polybar
-if [ `command -v polybar` ]; then
-    $DOTFILES/polybar/polybar.sh
-    $DOTFILES/scripts/log.sh "Started polybar"
-fi
-
 # start power manager
 if [ `command -v xfce4-power-manager` ]; then
     xfce4-power-manager --daemon
@@ -55,4 +49,10 @@ fi
 if [ `command -v pasystray` ]; then
     pasystray &
     $DOTFILES/scripts/log.sh "Started pasystray"
+fi
+
+# start polybar
+if [ `command -v polybar` ]; then
+    $DOTFILES/polybar/polybar.sh
+    $DOTFILES/scripts/log.sh "Started polybar"
 fi

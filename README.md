@@ -20,6 +20,7 @@ My personal config files.
 - dunst
 - polybar
 - tmux
+    - bc (for tmux version-specific command hack)
 - zsh
 - xss-lock (hooks to lock on suspend)
 - i3lock-color (lock screen)

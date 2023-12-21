@@ -19,6 +19,8 @@ fi
 
 if [ `command -v nvim` ]; then
     alias vim="nvim"
+elif [ ! `command -v vim` ]; then
+    alias vim="vi"
 fi
 
 if [ `command -v exa` ]; then
@@ -97,6 +99,9 @@ scratch() {
 #=============================
 # Misc.
 #=============================
+
+# Use emacs style keybinding for terminal navigation
+bindkey -e
 
 # set keyboard repeat rate and frequency
 #if [ `command -v xset` ]; then
