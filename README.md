@@ -25,6 +25,8 @@ My personal config files.
 - xss-lock (hooks to lock on suspend)
 - i3lock-color (lock screen)
 - xfce4-power-manager
+- arandr
+    - monitor/display management
 
 - Applicatons:
     - neovim (editor)

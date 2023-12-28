@@ -2,25 +2,14 @@
 $DOTFILES/scripts/log.sh "Running bspwm_config.sh"
 
 # monitor settings
-#bspc monitor -d I II III IV V VI VII VIII IX X
-if [[ `xrandr -q | grep ' connected' | cut -d ' ' -f1 | grep HDMI2` == '' ]]; then
-    xrandr --output eDP1 --primary --mode 1920x1080 --rotate normal
-    bspc monitor eDP1 -d 1 2 3 4 5
-else
-    xrandr --output HDMI2 --primary --mode 1920x1080 --rotate normal
-    xrandr --output HDMI2 --brightness 0.8
-    xrandr --output eDP1 --off
-        #--output eDP1 --mode 1920x1080 --rotate normal --left-of HDMI2
-    bspc monitor HDMI2 -d 1 2 3 4 5
-    #bspc monitor eDP1 -d 6 7 8 9 10
-fi
+bspc monitor -d 1 2 3 4 5 6 7 8
 
 $DOTFILES/bspwm/normal_mode_config.sh
 
 # split behaviour
 bspc config split_ratio          0.50
-bspc config borderless_monocle   false
-bspc config gapless_monocle      false
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
 
 # move pointer to focused monitor
 bspc config pointer_follows_monitor true
