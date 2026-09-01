@@ -38,6 +38,7 @@ dirs_to_link = {
     "dotfiles/fontconfig": ".config/fontconfig",
     "dotfiles/autorandr": ".config/autorandr",
     "dotfiles/claude/agents": ".claude/agents",
+    "dotfiles/vscode/warlock_theme": ".vscode/extensions/warlock_theme",
 }
 
 for key in files_to_link:
@@ -57,6 +58,9 @@ for key in files_to_link:
 for key in dirs_to_link:
     src = home_dir + key
     dst = home_dir + dirs_to_link[key]
+
+    # make sure the parent directory exists (e.g. ~/.vscode/extensions)
+    Path(dst).parent.mkdir(parents=True, exist_ok=True)
 
     # if dir already exists as a non symlink, then rename it with a .bak suffix
     if Path(dst).is_dir() and not Path(dst).is_symlink():

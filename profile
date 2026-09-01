@@ -69,3 +69,4 @@ fi
 # alacritty env variable for consistent font size
 export WINIT_HIDPI_FACTOR=1
 export WINIT_X11_SCALE_FACTOR=1
+. "$HOME/.cargo/env"

@@ -1,0 +1,43 @@
+{
+  "name": "warlock",
+  "displayName": "Warlock",
+  "description": "A grayscale dark theme for VS Code, ported from Martin Hardselius' Warlock Vim color scheme (a monochrome variant of Apprentice).",
+  "version": "1.2.1",
+  "publisher": "brayden-marshall",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.70.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "keywords": [
+    "warlock",
+    "grayscale",
+    "monochrome",
+    "dark",
+    "apprentice"
+  ],
+  "galleryBanner": {
+    "color": "#262626",
+    "theme": "dark"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hardselius/warlock"
+  },
+  "contributes": {
+    "themes": [
+      {
+        "label": "Warlock",
+        "uiTheme": "vs-dark",
+        "path": "./themes/warlock-color-theme.json"
+      },
+      {
+        "label": "Warlock Arcane",
+        "uiTheme": "vs-dark",
+        "path": "./themes/warlock-arcane-color-theme.json"
+      }
+    ]
+  }
+}
