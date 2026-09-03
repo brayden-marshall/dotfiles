@@ -1,1 +1,3 @@
-settings.json filter=redact-zed-wsl-config
+zed/settings.json filter=redact-zed-wsl-config
+
+scripts/configure_repo.sh text eol=lf
