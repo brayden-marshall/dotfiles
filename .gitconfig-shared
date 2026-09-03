@@ -1,0 +1,4 @@
+[filter "redact-zed-wsl-config"]
+    clean = jq 'del(.wsl_connections)'
+    smudge = cat
+    required = true
