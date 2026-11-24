@@ -1,4 +1,30 @@
 {
+  "completions": {
+    "lsp_fetch_timeout_ms": 100
+  },
+  "agent": {
+    "dock": "right",
+    "favorite_models": [],
+    "model_parameters": []
+  },
+  "agent_servers": {
+    "claude-acp": {
+      "default_config_options": {
+        "model": "opus",
+        "effort": "high",
+        "mode": "auto",
+        "fast": false
+      },
+      "type": "registry"
+    }
+  },
+  "git_panel": {
+    "group_by": "staging",
+    "tree_view": true
+  },
+  "use_autoclose": true,
+  "diff_view_style": "unified",
+  "text_rendering_mode": "platform_default",
   "cli_default_open_behavior": "new_window",
   "jsx_tag_auto_close": {
     "enabled": false
@@ -10,6 +36,7 @@
   },
   "format_on_save": "off",
   "git": {
+    "diff_base": "head",
     "inline_blame": {
       "enabled": false
     }
@@ -25,15 +52,71 @@
   },
   "buffer_font_family": "Consolas",
   "languages": {
+    "TypeScript": {
+      "language_servers": [
+        "!tailwindcss-language-server",
+        "..."
+      ]
+    },
+    "TSX": {
+      "tab_size": 4,
+      "language_servers": [
+        "!tailwindcss-language-server",
+        "..."
+      ]
+    },
+    "JavaScript": {
+      "language_servers": [
+        "!tailwindcss-language-server",
+        "..."
+      ]
+    },
+    "CSS": {
+      "language_servers": [
+        "!tailwindcss-language-server",
+        "..."
+      ]
+    },
+    "JSON": {
+      "language_servers": [
+        "!tailwindcss-language-server",
+        "..."
+      ]
+    },
+    "Shell Script": {
+      "format_on_save": "off"
+    },
+    "HTML-Jinja": {
+      "tab_size": 2,
+      "use_autoclose": false,
+      "language_servers": [
+        "!biome"
+      ]
+    },
     "HTML": {
+      "tab_size": 2,
       "jsx_tag_auto_close": {
         "enabled": false
       },
       "use_autoclose": false,
-      "auto_indent": "syntax_aware"
+      "auto_indent": "syntax_aware",
+      "language_servers": [
+        "!biome"
+      ]
     },
     "Python": {
-      "format_on_save": "modifications_if_available"
+      "completions": {
+        "lsp_fetch_timeout_ms": 100
+      },
+      "inlay_hints": {
+        "show_value_hints": false
+      },
+      "format_on_save": "modifications_if_available",
+      "language_servers": [
+        "!pylsp",
+        "basedpyright",
+        "ruff"
+      ]
     }
   },
   "session": {
@@ -44,8 +127,33 @@
   "buffer_font_size": 14.0,
   "theme": {
     "mode": "dark",
-    "light": "Gruvbox Light",
-    "dark": "Nord Darker"
+    "light": "Gruvbox Light Soft",
+    "dark": "Warlock Arcane"
+  },
+  "lsp": {
+    "vscode-html-language-server": {
+      "settings": {
+        "html": {
+          "autoClosingTags": false
+        }
+      }
+    },
+    "vtsls": {
+      "settings": {
+        "typescript": {
+          "tsserver": {
+            "maxTsServerMemory": 3072,
+            "useSyntaxServer": "never"
+          },
+          "disableAutomaticTypeAcquisition": true
+        },
+        "javascript": {
+          "tsserver": {
+            "maxTsServerMemory": 3072
+          }
+        }
+      }
+    }
   },
   "terminal": {
     "font_size": 14.0,
@@ -60,5 +168,18 @@
         "activate_script": "default"
       }
     }
-  }
+  },
+  "file_scan_exclusions": [
+    "**/.git",
+    "**/node_modules",
+    "**/.venv",
+    "**/venv",
+    "**/target",
+    "**/dist",
+    "**/.next",
+    "**/__pycache__",
+    "**/.pytest_cache",
+    "**/.ruff_cache",
+    "**/.mypy_cache"
+  ]
 }

@@ -1,0 +1,26 @@
+[
+  {
+    "context": "vim_mode == insert",
+    "unbind": {
+      "ctrl-t": "vim::Indent"
+    }
+  },
+  {
+    "context": "VimControl && !menu",
+    "unbind": {
+      "ctrl-t": "pane::GoToOlderTag"
+    }
+  },
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "ctrl-shift-h": "vim::ColumnLeft"
+    }
+  },
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "ctrl-shift-l": "vim::ColumnRight"
+    }
+  }
+]
